@@ -16,16 +16,13 @@ const args = [
 ]
 let browser;
 
-export const startBrowser = async () => {
-  browser = await puppeteer.launch({ args: args, headless: 'new' })
-}
-
 const generatePDF = async (html: string) => {
   const data = await inlineCss(html, { url: '/' })
   const template = hb.compile(data, { strict: true })
   const result = template(data)
   const parsedHTML = result
 
+  if (!browser) browser = await puppeteer.launch({ args: args, headless: 'new' })
 
   const page = await browser.newPage()
   await page.setContent(parsedHTML, { waitUntil: 'networkidle0' })
