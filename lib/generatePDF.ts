@@ -1,34 +1,22 @@
-import puppeteer from 'puppeteer'
 import inlineCss from 'inline-css'
 import hb from 'handlebars'
+import getConfig from 'next/config'
 
-const args = [
-  '--no-sandbox',
-  "--disable-setup-sandbox",
-  '--disable-setuid-sandbox',
-  '--disable-dev-shm-usage',
-  '--disable-accelerated-2d-canvas',
-  '--no-first-run',
-  '--no-zygote',
-  '--single-process', // <- this one doesn't works in Windows
-  '--disable-gpu'
-]
-let browser;
+const { serverRuntimeConfig } = getConfig()
 
 const generatePDF = async (html: string) => {
+  const puppeteerInstance = await serverRuntimeConfig.puppeteerInstance()
   const data = await inlineCss(html, { url: '/' })
   const template = hb.compile(data, { strict: true })
   const result = template(data)
   const parsedHTML = result
 
-  if (!browser) browser = await puppeteer.launch({ args: args, headless: 'new' })
-
-  const page = await browser.newPage()
+  const page = await puppeteerInstance.newPage()
   await page.setContent(parsedHTML, { waitUntil: 'networkidle0' })
   const pdf = await page.pdf({ format: 'A4' })
   await page.close()
+  console.log(pdf)
   return pdf
-
 }
 
 export default generatePDF
