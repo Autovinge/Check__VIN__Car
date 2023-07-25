@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "format": "prettier --config .prettierrc '**/*.{ts,js}' --ignore-path .prettierignore --write"
   },
   "dependencies": {
     "@chakra-ui/icons": "^2.0.19",
@@ -29,6 +30,7 @@
   },
   "devDependencies": {
     "@types/node": "20.3.3",
-    "@types/react": "18.2.14"
+    "@types/react": "18.2.14",
+    "prettier": "3.0.0"
   }
 }
