@@ -1,3 +1,4 @@
+import { getEnvVar } from './getEnvVar'
 const fakeDB = {}
 
 const getTransactionURL = async (
@@ -14,8 +15,8 @@ const getTransactionURL = async (
       },
       body: JSON.stringify({
         method: 'justPay',
-        apiKey: process.env.PAYZE_KEY,
-        apiSecret: process.env.PAYZE_SECRET,
+        apiKey: getEnvVar('PAYZE_KEY'),
+        apiSecret: getEnvVar('PAYZE_SECRET'),
         data: {
           amount: 1,
           currency: 'USD',
