@@ -1,4 +1,4 @@
-import { getEnvVar } from "./getEnvVar"
+import { getEnvVar } from './getEnvVar'
 
 const getVinInfo = async (
   vincode: string,
@@ -7,7 +7,9 @@ const getVinInfo = async (
 ) => {
   try {
     const response = await fetch(
-      `${getEnvVar("API_URL")}/${vendor}?vincode=${vincode}&api_key=${getEnvVar("API_KEY")}`
+      `${getEnvVar('API_URL')}/${vendor}?vincode=${vincode}&api_key=${getEnvVar(
+        'API_KEY'
+      )}`
     )
     const data = await response.json()
     return data
