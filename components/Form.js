@@ -24,6 +24,7 @@ const initState = { values: initValues }
 export default function Form() {
   const toast = useToast()
   const [state, setState] = useState(initState)
+  const [vendor, setVendor] = useState("carfax")
   const [touched, setTouched] = useState({})
 
   const { values, isLoading, error } = state
@@ -39,6 +40,14 @@ export default function Form() {
         [target.name]: target.value
       }
     }))
+  }
+
+  const handleCarfax = () => {
+    setVendor("carfax")
+  }
+
+  const handleAutocheck = () => {
+    setVendor("autocheck")
   }
 
   const onSubmit = () => {
@@ -77,6 +86,7 @@ export default function Form() {
             fontWeight={'bold'}
             as="span"
             fontSize={'lg'}
+            onClick={handleCarfax}
           >
             Carfax
             <br />{' '}
@@ -92,6 +102,7 @@ export default function Form() {
             as="span"
             fontSize={'lg'}
             w="160px"
+    onClick={handleAutocheck}
           >
             Autocheck <br />{' '}
             <Text ml={'25px'} color={'red.300'}>
