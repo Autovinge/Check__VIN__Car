@@ -4,6 +4,7 @@ import {
   validateVendor,
   validateVincode
 } from '../../lib/validate'
+import checkVin from '../../lib/check-vin'
 
 interface customNextApiRequest extends NextApiRequest {
   query: {
@@ -13,7 +14,7 @@ interface customNextApiRequest extends NextApiRequest {
   }
 }
 
-export default function handler(
+export default async function handler(
   req: customNextApiRequest,
   res: NextApiResponse
 ) {
@@ -26,9 +27,13 @@ export default function handler(
 
   // if successful validation
   if (!condArray.includes(false)) {
-    // this should redirect to payment
-    res.status(200).send({ vendor, vincode, receiver })
-  } else {
-    res.status(400).send(1)
+    // if vincode report exists
+    const reportFound = await checkVin(vincode, vendor)
+  // this should redirect to payment
+    res.status(200).send({ vendor, vincode, receiver, reportFound })
+  }
+
+  else {
+    res.status(400).send({msg: 'error'})
   }
 }
