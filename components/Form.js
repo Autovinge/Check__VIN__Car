@@ -28,7 +28,7 @@ export default function Form() {
   const [vendor, setVendor] = useState('carfax')
   const [touched, setTouched] = useState({})
 
-  const { values, isLoading, error } = state
+  const { values, isLoading, error, success} = state
 
   const onBlur = ({ target }) =>
     setTouched((prev) => ({ ...prev, [target.name]: true }))
@@ -43,6 +43,20 @@ export default function Form() {
     }))
   }
 
+  const setLoading = (loadingState) => {
+    setState((prev) => ({
+      ...prev,
+      isLoading: loadingState
+    }))
+  }
+
+  const setError = (errorText = '') => {
+    setState((prev) => ({
+      ...prev,
+      error: errorText
+    }))
+  }
+
   const handleCarfax = () => {
     setVendor('carfax')
   }
@@ -52,10 +66,8 @@ export default function Form() {
   }
 
   const onSubmit = async () => {
-    setState((prev) => ({
-      ...prev,
-      isLoading: true
-    }))
+    setLoading(true)
+    setError('')
 
     if (validateMail(state.values.email) && validateVincode(state.values.vin)) {
       try {
@@ -64,11 +76,19 @@ export default function Form() {
         )
         const re = await response.json()
         console.log(re.reportFound)
+        if (!re.reportFound) setError('Could not find report for that vincode')
+    setState((prev) => ({
+      ...prev,
+      success: "report found!"
+    }))
+
+        setLoading(false)
       } catch (err) {
         console.log(err)
       }
     } else {
-      console.log('validation failed')
+      setError('Validation Failed')
+      setLoading(false)
     }
   }
   return (
@@ -130,6 +150,11 @@ export default function Form() {
       {error && (
         <Text color="red.300" my={4} fontSize="xl">
           {error}
+        </Text>
+      )}
+      {success && (
+        <Text color="green.300" my={4} fontSize="xl">
+          {success}
         </Text>
       )}
       <FormControl isRequired isInvalid={touched.vin && !values.vin} mb={5}>
