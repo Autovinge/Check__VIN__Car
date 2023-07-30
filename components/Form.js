@@ -25,7 +25,7 @@ const initState = { values: initValues }
 export default function Form() {
   const toast = useToast()
   const [state, setState] = useState(initState)
-  const [vendor, setVendor] = useState("carfax")
+  const [vendor, setVendor] = useState('carfax')
   const [touched, setTouched] = useState({})
 
   const { values, isLoading, error } = state
@@ -44,11 +44,11 @@ export default function Form() {
   }
 
   const handleCarfax = () => {
-    setVendor("carfax")
+    setVendor('carfax')
   }
 
   const handleAutocheck = () => {
-    setVendor("autocheck")
+    setVendor('autocheck')
   }
 
   const onSubmit = async () => {
@@ -59,18 +59,17 @@ export default function Form() {
 
     if (validateMail(state.values.email) && validateVincode(state.values.vin)) {
       try {
-        const response = await fetch(`/api/car-info?vendor=${vendor}&vincode=${state.values.vin}&receiver=${state.values.email}`)
+        const response = await fetch(
+          `/api/car-info?vendor=${vendor}&vincode=${state.values.vin}&receiver=${state.values.email}`
+        )
         const re = await response.json()
         console.log(re.reportFound)
       } catch (err) {
         console.log(err)
       }
-
     } else {
       console.log('validation failed')
     }
-
-
   }
   return (
     <Container>
