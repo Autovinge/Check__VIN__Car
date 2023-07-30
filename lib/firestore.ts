@@ -22,16 +22,20 @@ initializeApp(firebaseConfig)
 const auth = getAuth()
 const db = getFirestore()
 
-export const addDocument = async (
-  id: string,
-  mail: string,
-  vincode: string
-) => {
+const signIn = async () => {
   await signInWithEmailAndPassword(
     auth,
     getEnvVar('FIRESTORE_MAIL'),
     getEnvVar('FIRESTORE_PASSWORD')
   )
+}
+
+export const addDocument = async (
+  id: string,
+  mail: string,
+  vincode: string
+) => {
+  await signIn()
   await setDoc(doc(db, 'user-info', id), {
     mail,
     vincode,
@@ -40,31 +44,19 @@ export const addDocument = async (
 }
 
 export const getDocumentById = async (id: string) => {
-  await signInWithEmailAndPassword(
-    auth,
-    getEnvVar('FIRESTORE_MAIL'),
-    getEnvVar('FIRESTORE_PASSWORD')
-  )
+  await signIn()
   const ref = doc(db, 'user-info', id)
   return ref
 }
 
 export const deleteDocumentById = async (id: string) => {
-  await signInWithEmailAndPassword(
-    auth,
-    getEnvVar('FIRESTORE_MAIL'),
-    getEnvVar('FIRESTORE_PASSWORD')
-  )
+  await signIn()
   const ref = doc(db, 'user-info', id)
   await deleteDoc(ref)
 }
 
 export const updateSentMail = async (id: string) => {
-  await signInWithEmailAndPassword(
-    auth,
-    getEnvVar('FIRESTORE_MAIL'),
-    getEnvVar('FIRESTORE_PASSWORD')
-  )
+  await signIn()
   const ref = doc(db, 'user-info', id)
   await updateDoc(ref, {
     mailSent: true
