@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { validateMail, validateVincode } from '../lib/validate'
 import {
   Container,
   Heading,
@@ -50,11 +51,26 @@ export default function Form() {
     setVendor("autocheck")
   }
 
-  const onSubmit = () => {
+  const onSubmit = async () => {
     setState((prev) => ({
       ...prev,
       isLoading: true
     }))
+
+    if (validateMail(state.values.email) && validateVincode(state.values.vin)) {
+      try {
+        const response = await fetch(`/api/car-info?vendor=${vendor}&vincode=${state.values.vin}&receiver=${state.values.email}`)
+        const re = await response.json()
+        console.log(re.reportFound)
+      } catch (err) {
+        console.log(err)
+      }
+
+    } else {
+      console.log('validation failed')
+    }
+
+
   }
   return (
     <Container>
@@ -102,7 +118,7 @@ export default function Form() {
             as="span"
             fontSize={'lg'}
             w="160px"
-    onClick={handleAutocheck}
+            onClick={handleAutocheck}
           >
             Autocheck <br />{' '}
             <Text ml={'25px'} color={'red.300'}>
