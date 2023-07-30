@@ -57,6 +57,13 @@ export default function Form() {
     }))
   }
 
+  const setSeccuss = (text = '') => {
+    setState((prev) => ({
+      ...prev,
+      success: text
+    }))
+  }
+
   const handleCarfax = () => {
     setVendor('carfax')
   }
@@ -67,25 +74,28 @@ export default function Form() {
 
   const onSubmit = async () => {
     setLoading(true)
-    setError('')
+    setError()
+    setSeccuss()
 
-    if (validateMail(state.values.email) && validateVincode(state.values.vin)) {
+    const getReportStatus = async (vend, vincode, email) => {
       try {
-        const response = await fetch(
-          `/api/car-info?vendor=${vendor}&vincode=${state.values.vin}&receiver=${state.values.email}`
+        const res = await fetch(
+          `/api/car-info?vendor=${vend}&vincode=${vincode}&receiver=${email}`
         )
-        const re = await response.json()
-        console.log(re.reportFound)
-        if (!re.reportFound) setError('Could not find report for that vincode')
+        const reportStatus = await res.json()
+        if (!reportStatus.reportFound)
+          setError('Could not find report for that vincode')
         setState((prev) => ({
           ...prev,
           success: 'report found!'
         }))
-
         setLoading(false)
       } catch (err) {
-        console.log(err)
+        setError('Could not access server. Please try again')
       }
+    }
+    if (validateMail(state.values.email) && validateVincode(state.values.vin)) {
+      await getReportStatus(vendor, state.values.vin, state.values.email)
     } else {
       setError('Validation Failed')
       setLoading(false)
