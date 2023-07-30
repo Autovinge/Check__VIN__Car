@@ -28,7 +28,7 @@ export default function Form() {
   const [vendor, setVendor] = useState('carfax')
   const [touched, setTouched] = useState({})
 
-  const { values, isLoading, error, success} = state
+  const { values, isLoading, error, success } = state
 
   const onBlur = ({ target }) =>
     setTouched((prev) => ({ ...prev, [target.name]: true }))
@@ -77,10 +77,10 @@ export default function Form() {
         const re = await response.json()
         console.log(re.reportFound)
         if (!re.reportFound) setError('Could not find report for that vincode')
-    setState((prev) => ({
-      ...prev,
-      success: "report found!"
-    }))
+        setState((prev) => ({
+          ...prev,
+          success: 'report found!'
+        }))
 
         setLoading(false)
       } catch (err) {
