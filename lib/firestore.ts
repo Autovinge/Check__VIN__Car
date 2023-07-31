@@ -33,7 +33,8 @@ const signIn = async () => {
 export const addDocument = async (
   id: string,
   mail: string,
-  vincode: string
+  vincode: string,
+  tries: number = 3
 ) => {
   await signIn()
   await setDoc(doc(db, 'user-info', id), {
@@ -43,22 +44,34 @@ export const addDocument = async (
   })
 }
 
-export const getDocumentById = async (id: string) => {
-  await signIn()
-  const ref = doc(db, 'user-info', id)
-  return ref
+export const getDocumentById = async (id: string, tries: number = 3) => {
+  try {
+    await signIn()
+    const ref = doc(db, 'user-info', id)
+    return ref
+  } catch {
+    if (tries > 0) return getDocumentById(id, tries - 1)
+  }
 }
 
-export const deleteDocumentById = async (id: string) => {
-  await signIn()
-  const ref = doc(db, 'user-info', id)
-  await deleteDoc(ref)
+export const deleteDocumentById = async (id: string, tries: number = 3) => {
+  try {
+    await signIn()
+    const ref = doc(db, 'user-info', id)
+    await deleteDoc(ref)
+  } catch {
+    if (tries > 0) return deleteDocumentById(id, tries - 1)
+  }
 }
 
-export const updateSentMail = async (id: string) => {
-  await signIn()
-  const ref = doc(db, 'user-info', id)
-  await updateDoc(ref, {
-    mailSent: true
-  })
+export const updateSentMail = async (id: string, tries: number = 3) => {
+  try {
+    await signIn()
+    const ref = doc(db, 'user-info', id)
+    await updateDoc(ref, {
+      mailSent: true
+    })
+  } catch {
+    if (tries > 0) return updateSentMail(id, tries - 1)
+  }
 }
