@@ -12,7 +12,7 @@ const generatePDF = async (html: string) => {
   const parsedHTML = result
 
   const page = await puppeteerInstance.newPage()
-  await page.setContent(parsedHTML, { waitUntil: 'networkidle0' })
+  await page.setContent(parsedHTML, { waitUntil: 'networkidle0', timeout:0 })
   const pdf = await page.pdf({ format: 'A4' })
   await page.close()
   console.log(pdf)
