@@ -1,3 +1,4 @@
+import { addDocument } from './firestore'
 import { getEnvVar } from './getEnvVar'
 
 const getTransactionURL = async (
@@ -39,6 +40,7 @@ const getTransactionURL = async (
     if (!response) throw new Error()
 
     const { transactionId } = response.response
+    await addDocument(transactionId, mail, vincode)
 
     return response
   } catch (err) {
