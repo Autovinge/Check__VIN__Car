@@ -35,6 +35,7 @@ export const addDocument = async (
   id: string,
   mail: string,
   vincode: string,
+  vendor: string,
   tries: number = 3
 ) => {
   try {
@@ -42,6 +43,7 @@ export const addDocument = async (
     await setDoc(doc(db, 'user-info', id), {
       mail,
       vincode,
+      vendor,
       mailSent: false
     })
   } catch {
