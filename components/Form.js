@@ -30,36 +30,39 @@ export default function Form() {
   const { values, isLoading, error, success, validationError } = state
 
   useEffect(() => {
-    if (validationError) toast({
-      title: 'Validation error',
-      description: validationError,
-      status: 'error',
-      duration: 3000,
-      position: "top",
-      isClosable: true,
-    })
+    if (validationError)
+      toast({
+        title: 'Validation error',
+        description: validationError,
+        status: 'error',
+        duration: 3000,
+        position: 'top',
+        isClosable: true
+      })
   }, [toast, validationError])
 
   useEffect(() => {
-    if (success) toast({
-      title: 'Report found',
-      description: success,
-      status: 'success',
-      duration: 3000,
-      position: "top",
-      isClosable: true,
-    })
+    if (success)
+      toast({
+        title: 'Report found',
+        description: success,
+        status: 'success',
+        duration: 3000,
+        position: 'top',
+        isClosable: true
+      })
   }, [toast, success])
 
   useEffect(() => {
-    if (error) toast({
-      title: 'Report not found',
-      description: error,
-      status: 'error',
-      duration: 3000,
-      position: "top",
-      isClosable: true,
-    })
+    if (error)
+      toast({
+        title: 'Report not found',
+        description: error,
+        status: 'error',
+        duration: 3000,
+        position: 'top',
+        isClosable: true
+      })
   }, [toast, error])
 
   const onBlur = ({ target }) =>
@@ -125,10 +128,11 @@ export default function Form() {
         const reportStatus = await res.json()
         if (!reportStatus.reportFound)
           setError('Could not find report for that vincode')
-        else setState((prev) => ({
-          ...prev,
-          success: 'report found!'
-        }))
+        else
+          setState((prev) => ({
+            ...prev,
+            success: 'report found!'
+          }))
         setLoading(false)
       } catch (err) {
         setError('Could not access server. Please try again')
