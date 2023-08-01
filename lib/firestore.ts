@@ -2,6 +2,7 @@ import { initializeApp } from 'firebase/app'
 import {
   getFirestore,
   doc,
+  getDoc,
   setDoc,
   deleteDoc,
   updateDoc
@@ -56,7 +57,8 @@ export const getDocumentById = async (id: string, tries: number = 3) => {
   try {
     await signIn()
     const ref = doc(db, 'user-info', id)
-    return ref
+    const docSnap = await getDoc(ref)
+    return docSnap.data()
   } catch {
     if (tries > 0) {
       return getDocumentById(id, tries - 1)
