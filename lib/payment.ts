@@ -1,9 +1,9 @@
 import { getEnvVar } from './getEnvVar'
-const fakeDB = {}
 
 const getTransactionURL = async (
   vincode: string,
   mail: string,
+  amount: number,
   tries: number = 3
 ) => {
   try {
@@ -18,7 +18,7 @@ const getTransactionURL = async (
         apiKey: getEnvVar('PAYZE_KEY'),
         apiSecret: getEnvVar('PAYZE_SECRET'),
         data: {
-          amount: 1,
+          amount: amount,
           currency: 'USD',
           callback: 'http://localhost:3000',
           callbackError: 'https://corp.com/fail_url',
@@ -27,7 +27,7 @@ const getTransactionURL = async (
           hookUrl: 'https://corp.com/payze_hook?authorization_token=token',
           hookUrlV2: 'https://0329-31-192-15-188.ngrok.io/api/webhook',
           info: {
-            description: `Resport for ${vincode}`,
+            description: `Report for ${vincode}`,
             name: vincode
           },
           hookRefund: false
@@ -39,14 +39,11 @@ const getTransactionURL = async (
     if (!response) throw new Error()
 
     const { transactionId } = response.response
-    fakeDB[transactionId] = {
-      mail,
-      vincode
-    }
+
     return response
   } catch (err) {
     if (tries > 0) {
-      return getTransactionURL(vincode, mail, tries - 1)
+      return getTransactionURL(vincode, mail, amount, tries - 1)
     }
 
     throw new Error('Could not get transaction url')
