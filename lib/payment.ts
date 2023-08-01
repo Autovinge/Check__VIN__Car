@@ -5,6 +5,7 @@ const getTransactionURL = async (
   vincode: string,
   mail: string,
   amount: number,
+  vendor: string,
   tries: number = 3
 ) => {
   try {
@@ -40,12 +41,12 @@ const getTransactionURL = async (
     if (!response) throw new Error()
 
     const { transactionId } = response.response
-    await addDocument(transactionId, mail, vincode)
+    await addDocument(transactionId, mail, vincode, vendor)
 
     return response
   } catch (err) {
     if (tries > 0) {
-      return getTransactionURL(vincode, mail, amount, tries - 1)
+      return getTransactionURL(vincode, mail, amount, vendor, tries - 1)
     }
 
     throw new Error('Could not get transaction url')
