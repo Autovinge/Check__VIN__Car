@@ -36,12 +36,20 @@ export const addDocument = async (
   vincode: string,
   tries: number = 3
 ) => {
-  await signIn()
-  await setDoc(doc(db, 'user-info', id), {
-    mail,
-    vincode,
-    mailSent: false
-  })
+  try {
+    await signIn()
+    await setDoc(doc(db, 'user-info', id), {
+      mail,
+      vincode,
+      mailSent: false
+    })
+  } catch {
+    if (tries > 0) {
+      return addDocument(id, mail, vincode, tries - 1)
+    } else {
+      throw new Error()
+    }
+  }
 }
 
 export const getDocumentById = async (id: string, tries: number = 3) => {
@@ -50,7 +58,11 @@ export const getDocumentById = async (id: string, tries: number = 3) => {
     const ref = doc(db, 'user-info', id)
     return ref
   } catch {
-    if (tries > 0) return getDocumentById(id, tries - 1)
+    if (tries > 0) {
+      return getDocumentById(id, tries - 1)
+    } else {
+      throw new Error()
+    }
   }
 }
 
@@ -60,7 +72,11 @@ export const deleteDocumentById = async (id: string, tries: number = 3) => {
     const ref = doc(db, 'user-info', id)
     await deleteDoc(ref)
   } catch {
-    if (tries > 0) return deleteDocumentById(id, tries - 1)
+    if (tries > 0) {
+      return deleteDocumentById(id, tries - 1)
+    } else {
+      throw new Error()
+    }
   }
 }
 
@@ -72,6 +88,10 @@ export const updateSentMail = async (id: string, tries: number = 3) => {
       mailSent: true
     })
   } catch {
-    if (tries > 0) return updateSentMail(id, tries - 1)
+    if (tries > 0) {
+      return updateSentMail(id, tries - 1)
+    } else {
+      throw new Error()
+    }
   }
 }
