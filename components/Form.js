@@ -30,42 +30,36 @@ export default function Form() {
   const { values, isLoading, error, success, validationError } = state
 
   useEffect(() => {
-    if (validationError)
-      toast({
-        title: 'Validation error',
-        description: validationError,
-        status: 'error',
-        duration: 3000,
-        position: 'top',
-        isClosable: true
-      })
-    setValidationError()
+    if (validationError) toast({
+      title: 'Validation error',
+      description: validationError,
+      status: 'error',
+      duration: 3000,
+      position: "top",
+      isClosable: true,
+    })
   }, [toast, validationError])
 
   useEffect(() => {
-    if (success)
-      toast({
-        title: 'Report found',
-        description: success,
-        status: 'success',
-        duration: 3000,
-        position: 'top',
-        isClosable: true
-      })
-    setSeccuss()
+    if (success) toast({
+      title: 'Report found',
+      description: success,
+      status: 'success',
+      duration: 3000,
+      position: "top",
+      isClosable: true,
+    })
   }, [toast, success])
 
   useEffect(() => {
-    if (error)
-      toast({
-        title: 'Report not found',
-        description: error,
-        status: 'error',
-        duration: 3000,
-        position: 'top',
-        isClosable: true
-      })
-    setError()
+    if (error) toast({
+      title: 'Report not found',
+      description: error,
+      status: 'error',
+      duration: 3000,
+      position: "top",
+      isClosable: true,
+    })
   }, [toast, error])
 
   const onBlur = ({ target }) =>
@@ -121,6 +115,7 @@ export default function Form() {
     setLoading(true)
     setError()
     setSeccuss()
+    setValidationError()
 
     const getReportStatus = async (vend, vincode, email) => {
       try {
@@ -130,16 +125,16 @@ export default function Form() {
         const reportStatus = await res.json()
         if (!reportStatus.reportFound)
           setError('Could not find report for that vincode')
-        else
-          setState((prev) => ({
-            ...prev,
-            success: 'report found!'
-          }))
+        else setState((prev) => ({
+          ...prev,
+          success: 'report found!'
+        }))
         setLoading(false)
       } catch (err) {
         setError('Could not access server. Please try again')
       }
     }
+
     if (validateMail(state.values.email) && validateVincode(state.values.vin)) {
       await getReportStatus(vendor, state.values.vin, state.values.email)
     } else {
