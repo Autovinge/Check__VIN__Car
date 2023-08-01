@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { validateMail, validateVincode } from '../lib/validate'
 import {
   Container,
@@ -27,8 +27,46 @@ export default function Form() {
   const [state, setState] = useState(initState)
   const [vendor, setVendor] = useState('carfax')
   const [touched, setTouched] = useState({})
+  const { values, isLoading, error, success, validationError } = state
 
-  const { values, isLoading, error, success } = state
+  useEffect(() => {
+    if (validationError)
+      toast({
+        title: 'Validation error',
+        description: validationError,
+        status: 'error',
+        duration: 3000,
+        position: 'top',
+        isClosable: true
+      })
+    setValidationError()
+  }, [toast, validationError])
+
+  useEffect(() => {
+    if (success)
+      toast({
+        title: 'Report found',
+        description: success,
+        status: 'success',
+        duration: 3000,
+        position: 'top',
+        isClosable: true
+      })
+    setSeccuss()
+  }, [toast, success])
+
+  useEffect(() => {
+    if (error)
+      toast({
+        title: 'Report not found',
+        description: error,
+        status: 'error',
+        duration: 3000,
+        position: 'top',
+        isClosable: true
+      })
+    setError()
+  }, [toast, error])
 
   const onBlur = ({ target }) =>
     setTouched((prev) => ({ ...prev, [target.name]: true }))
@@ -54,6 +92,13 @@ export default function Form() {
     setState((prev) => ({
       ...prev,
       error: errorText
+    }))
+  }
+
+  const setValidationError = (errorText = '') => {
+    setState((prev) => ({
+      ...prev,
+      validationError: errorText
     }))
   }
 
@@ -85,10 +130,11 @@ export default function Form() {
         const reportStatus = await res.json()
         if (!reportStatus.reportFound)
           setError('Could not find report for that vincode')
-        setState((prev) => ({
-          ...prev,
-          success: 'report found!'
-        }))
+        else
+          setState((prev) => ({
+            ...prev,
+            success: 'report found!'
+          }))
         setLoading(false)
       } catch (err) {
         setError('Could not access server. Please try again')
@@ -97,7 +143,7 @@ export default function Form() {
     if (validateMail(state.values.email) && validateVincode(state.values.vin)) {
       await getReportStatus(vendor, state.values.vin, state.values.email)
     } else {
-      setError('Validation Failed')
+      setValidationError('Check vincode and email')
       setLoading(false)
     }
   }
@@ -157,16 +203,6 @@ export default function Form() {
           </Box>
         </Center>
       </HStack>
-      {error && (
-        <Text color="red.300" my={4} fontSize="xl">
-          {error}
-        </Text>
-      )}
-      {success && (
-        <Text color="green.300" my={4} fontSize="xl">
-          {success}
-        </Text>
-      )}
       <FormControl isRequired isInvalid={touched.vin && !values.vin} mb={5}>
         <FormLabel>VIN</FormLabel>
         <Input
