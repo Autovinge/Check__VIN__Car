@@ -1,9 +1,13 @@
 import { NextApiRequest, NextApiResponse } from 'next'
-import { deleteDocumentById,updateSentMail, getDocumentById } from '../../lib/firestore'
+import {
+  deleteDocumentById,
+  updateSentMail,
+  getDocumentById
+} from '../../lib/firestore'
 import getVinInfo from '../../lib/get-vin-info'
 import generatePDF from '../../lib/generatePDF'
 import { sendMail } from '../../lib/mail'
-export default async function(req: NextApiRequest, res: NextApiResponse) {
+export default async function (req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     const { PaymentStatus, PaymentId } = req.body
 
@@ -21,12 +25,12 @@ export default async function(req: NextApiRequest, res: NextApiResponse) {
           const pdfBuffer = await generatePDF(data.autocheck_data)
           await sendMail(data.mail, data.vincode, data.vendor, pdfBuffer)
           await updateSentMail(PaymentId)
-          res.status(200).send({ msg: "Report sent" })
+          res.status(200).send({ msg: 'Report sent' })
         } catch (err) {
-          res.status(404).send({ msg: "error" })
+          res.status(404).send({ msg: 'error' })
         }
       default:
-        res.status(404).send({ msg: "There was errpr" })
+        res.status(404).send({ msg: 'There was errpr' })
     }
   }
 }
