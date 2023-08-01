@@ -1,4 +1,4 @@
-export default async function(req, res) {
+export default async function (req, res) {
   if (req.method === 'POST') {
     const { PaymentStatus, PaymentId } = req.body
 
