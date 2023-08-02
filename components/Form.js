@@ -135,7 +135,7 @@ export default function Form() {
         const data = await res.json()
         window.location.replace(data.response.transactionUrl)
       } catch (err) {
-        setError("Could not access payment! Try again")
+        setError('Could not access payment! Try again')
       }
     }
 
