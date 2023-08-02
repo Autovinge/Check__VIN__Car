@@ -48,7 +48,7 @@ export const addDocument = async (
     })
   } catch {
     if (tries > 0) {
-      return addDocument(id, mail, vincode, tries - 1)
+      return addDocument(id, mail, vincode, vendor, tries - 1)
     } else {
       throw new Error()
     }
