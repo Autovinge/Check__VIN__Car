@@ -157,7 +157,9 @@ export default function Form() {
       >
         top VIN number lookup
       </Heading>
-
+      <HStack m={'10'} justifyContent="center" >
+        <Button size="md" variant="solid" w="full" colorScheme="blue" > Go to checkout </Button>
+      </HStack>
       <HStack m={'10'} justifyContent="center">
         <Center
           w="140px"
