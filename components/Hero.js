@@ -25,30 +25,34 @@ const Hero = () => {
         </Heading>
       </Box>
       <Box display="flex" w={'full'} h="200px" bg={'blue.400'}>
-          <Flex w={{base: '100%', md: '80%', lg: '60%'}} ml="auto" mr="auto" fontSize={{ base: '80px', md: '95px', lg: '120px' }} textColor="white" justify="space-around" align="center">
-            <Box>
-              <BsClock />
-              <Text
-                fontSize={{ base: '16px', md: '20px', lg: '24px' }}
-                mt="5px"
-              >SAVE TIME</Text>
-            </Box>
-            <Box>
-              <LiaCoinsSolid />
-              <Text
-                fontSize={{ base: '16px', md: '20px', lg: '24px' }}
-                mt="5px"
-              >SAVE MONEY</Text>
-            </Box>
-            <Box>
-              <GoShieldCheck />
-              <Text
-                fontSize={{ base: '16px', md: '20px', lg: '24px' }}
-                mt="5px"
-              >PROTECT</Text>
-            </Box>
-
-          </Flex>
+        <Flex
+          w={{ base: '100%', md: '80%', lg: '60%' }}
+          ml="auto"
+          mr="auto"
+          fontSize={{ base: '80px', md: '95px', lg: '120px' }}
+          textColor="white"
+          justify="space-around"
+          align="center"
+        >
+          <Box>
+            <BsClock />
+            <Text fontSize={{ base: '16px', md: '20px', lg: '24px' }} mt="5px">
+              SAVE TIME
+            </Text>
+          </Box>
+          <Box>
+            <LiaCoinsSolid />
+            <Text fontSize={{ base: '16px', md: '20px', lg: '24px' }} mt="5px">
+              SAVE MONEY
+            </Text>
+          </Box>
+          <Box>
+            <GoShieldCheck />
+            <Text fontSize={{ base: '16px', md: '20px', lg: '24px' }} mt="5px">
+              PROTECT
+            </Text>
+          </Box>
+        </Flex>
       </Box>
     </Box>
   )
