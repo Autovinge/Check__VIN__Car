@@ -13,6 +13,8 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
 
     switch (PaymentStatus) {
       case 'Timeout':
+        await deleteDocumentById(PaymentId)
+        res.send({})
       case 'Rejected':
         await deleteDocumentById(PaymentId)
         res.send({})
@@ -28,10 +30,11 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
           res.send({})
         }
       case 'Draft':
-
+        res.send({})
       case 'Created':
-
+        res.send({})
       default:
+        res.send({})
     }
   }
 }
