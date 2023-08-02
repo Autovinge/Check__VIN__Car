@@ -12,25 +12,31 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     const { PaymentStatus, PaymentId } = req.body
 
     switch (PaymentStatus) {
+      case 'Timeout':
       case 'Rejected':
         await deleteDocumentById(PaymentId)
-        res.status(400).send({ msg: 'Payment rejected' })
-      case 'Timeout':
-        await deleteDocumentById(PaymentId)
-        res.status(400).send({ msg: 'Payment timeout' })
+        res.send({})
       case 'Captured':
         try {
           const doc = await getDocumentById(PaymentId)
+          console.log('doc done')
           const data = await getVinInfo(doc.vincode, doc.vendor)
+          console.log('data done')
           const pdfBuffer = await generatePDF(data.autocheck_data)
-          await sendMail(data.mail, data.vincode, data.vendor, pdfBuffer)
+          console.log('pdf done')
+          await sendMail(doc.mail, doc.vincode, doc.vendor, pdfBuffer)
+          console.log('mail sent')
           await updateSentMail(PaymentId)
-          res.status(200).send({ msg: 'Report sent' })
+          console.log('updated db')
+          res.send({})
         } catch (err) {
-          res.status(404).send({ msg: 'error' })
+          res.send({})
         }
+      case 'Draft':
+
+      case 'Created':
+
       default:
-        res.status(404).send({ msg: 'There was errpr' })
     }
   }
 }

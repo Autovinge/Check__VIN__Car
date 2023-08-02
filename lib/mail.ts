@@ -10,9 +10,28 @@ export const sendMail = async (
   pdfBuffer: Buffer,
   tries: number = 3
 ) => {
+  console.log('started mail')
   const msg = {
-    to: mail, // Change to your recipient
-    from: 'mts.sturua@gmail.com', // Change to your verified sender
+    personalizations: [
+      {
+        to: [
+          {
+            email: mail
+          }
+        ]
+      }
+    ],
+    // from:'mts.sturua@gmail.com',
+    // to: mail, // Change to your recipient
+    from: {
+      email: 'mts.sturua@gmail.com',
+      name: 'report'
+    },
+    replyTo: {
+      email: mail,
+      address: mail,
+      name: 'report'
+    },
     subject: `${vendor} report`,
     html: `<strong>${vendor} report for ${vincode}</strong>`,
     attachments: [
@@ -27,9 +46,15 @@ export const sendMail = async (
   }
 
   try {
+    console.log('start sending')
     await sgMail.send(msg)
+    console.log('finish sending')
   } catch (err) {
-    if (tries > 0) return sendMail(mail, vincode, vendor, pdfBuffer, tries - 1)
-    throw new Error('Could not send mail')
+    console.log(err)
+    if (tries > 2) {
+      return sendMail(mail, vincode, vendor, pdfBuffer, tries - 1)
+    } else {
+      throw new Error('Could not send mail')
+    }
   }
 }
