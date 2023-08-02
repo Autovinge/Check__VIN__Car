@@ -199,48 +199,33 @@ export default function Form() {
       )}
 
       <HStack m={'10'} justifyContent="center">
-        <Center
-          w="140px"
+        <Button
+          w="160px"
           h="60px"
-          bg="white"
-          border="2px"
-          borderColor="red.300"
-          color="blue.500"
-          display="flex"
-          justifyContent="space-between"
-          alignItems="center"
+          onClick={handleCarfax}
+          border="1px"
+          backgroundColor={vendor === 'carfax' ? '#FFF5F5' :'#F1F5FB'}
+          borderColor={vendor === 'carfax' ? "red" : "white"}
         >
-          <Box
-            w="170px"
-            ml="45px"
-            fontWeight={'bold'}
-            as="span"
-            fontSize={'lg'}
-            onClick={handleCarfax}
-          >
-            Carfax
-            <br />{' '}
-            <Text ml={'10px'} color="red.300">
-              20₾
-            </Text>
-          </Box>
-        </Center>
-        <Center w="140px" h="60px" bg="white" color="blue.500">
-          <Box
-            ml="25px"
-            fontWeight={'bold'}
-            as="span"
-            fontSize={'lg'}
-            w="160px"
-            onClick={handleAutocheck}
-          >
-            Autocheck <br />{' '}
-            <Text ml={'25px'} color={'red.300'}>
-              {' '}
-              20₾
-            </Text>
-          </Box>
-        </Center>
+          Carfax
+          <Text ml={'10px'} color="red.300">
+            20₾
+          </Text>
+        </Button>
+        <Button
+          h='60px'
+          w="160px"
+          border="1px"
+          onClick={handleAutocheck}
+          backgroundColor={vendor === 'autocheck' ? '#FFF5F5' : '#F1F5FB'}
+          borderColor={vendor === 'autocheck' ? "red" : "white"}
+          borde
+        >
+          Autocheck
+          <Text ml={'25px'} color={'red.300'}>
+            20₾
+          </Text>
+        </Button>
       </HStack>
       <FormControl isRequired isInvalid={touched.vin && !values.vin} mb={5}>
         <FormLabel>VIN</FormLabel>
