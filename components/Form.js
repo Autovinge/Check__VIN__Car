@@ -8,8 +8,6 @@ import {
   Input,
   FormErrorMessage,
   HStack,
-  Center,
-  Box,
   Text,
   useToast,
   Button
@@ -27,7 +25,8 @@ export default function Form() {
   const [state, setState] = useState(initState)
   const [vendor, setVendor] = useState('carfax')
   const [touched, setTouched] = useState({})
-  const { values, isLoading, error, success, validationError } = state
+  const { values, isLoading, error, success, validationError, isUrlLoading } =
+    state
 
   useEffect(() => {
     if (validationError)
@@ -115,6 +114,10 @@ export default function Form() {
   }
 
   const handleTransaction = async () => {
+    setState((prev) => ({
+      ...prev,
+      isUrlLoading: true
+    }))
     const getTransactionURL = async () => {
       try {
         const res = await fetch('/api/checkout', {
@@ -191,9 +194,9 @@ export default function Form() {
             w="full"
             colorScheme="blue"
             onClick={handleTransaction}
+            isLoading={isUrlLoading}
           >
-            {' '}
-            Go to checkout{' '}
+            Proceed to checkout
           </Button>
         </HStack>
       )}
@@ -204,8 +207,8 @@ export default function Form() {
           h="60px"
           onClick={handleCarfax}
           border="1px"
-          backgroundColor={vendor === 'carfax' ? '#FFF5F5' :'#F1F5FB'}
-          borderColor={vendor === 'carfax' ? "red" : "white"}
+          backgroundColor={vendor === 'carfax' ? '#FFF5F5' : '#F1F5FB'}
+          borderColor={vendor === 'carfax' ? 'red' : 'white'}
         >
           Carfax
           <Text ml={'10px'} color="red.300">
@@ -213,12 +216,12 @@ export default function Form() {
           </Text>
         </Button>
         <Button
-          h='60px'
+          h="60px"
           w="160px"
           border="1px"
           onClick={handleAutocheck}
           backgroundColor={vendor === 'autocheck' ? '#FFF5F5' : '#F1F5FB'}
-          borderColor={vendor === 'autocheck' ? "red" : "white"}
+          borderColor={vendor === 'autocheck' ? 'red' : 'white'}
           borde
         >
           Autocheck
