@@ -12,13 +12,13 @@ const Hero = () => {
           mt={'10%'}
           // w="100%"
           ml="auto"
-    mr="auto"
+          mr="auto"
           mb="20"
           pl="20px"
           pr="20px"
           alignItems={'center'}
           fontSize={{ base: '16px', md: '20px', lg: '24px' }}
-    textAlign="center"
+          textAlign="center"
         >
           VIN check reports for all makes and models of Cars,Trucks,RVs and
           Motorcycles
