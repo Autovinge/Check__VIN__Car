@@ -186,7 +186,7 @@ export default function Form() {
       >
         top VIN number lookup
       </Heading>
-      {success && (
+      {success && !error ? (
         <HStack m={'10'} justifyContent="center">
           <Button
             size="md"
@@ -199,7 +199,7 @@ export default function Form() {
             Proceed to checkout
           </Button>
         </HStack>
-      )}
+      ) : null}
 
       <HStack m={'10'} justifyContent="center">
         <Button
@@ -222,7 +222,6 @@ export default function Form() {
           onClick={handleAutocheck}
           backgroundColor={vendor === 'autocheck' ? '#FFF5F5' : '#F1F5FB'}
           borderColor={vendor === 'autocheck' ? 'red' : 'white'}
-          borde
         >
           Autocheck
           <Text ml={'25px'} color={'red.300'}>
