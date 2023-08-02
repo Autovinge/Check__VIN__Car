@@ -19,15 +19,10 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
       case 'Captured':
         try {
           const doc = await getDocumentById(PaymentId)
-          console.log('doc done')
           const data = await getVinInfo(doc.vincode, doc.vendor)
-          console.log('data done')
           const pdfBuffer = await generatePDF(data.autocheck_data)
-          console.log('pdf done')
           await sendMail(doc.mail, doc.vincode, doc.vendor, pdfBuffer)
-          console.log('mail sent')
           await updateSentMail(PaymentId)
-          console.log('updated db')
           res.send({})
         } catch (err) {
           res.send({})

@@ -10,7 +10,6 @@ export const sendMail = async (
   pdfBuffer: Buffer,
   tries: number = 3
 ) => {
-  console.log('started mail')
   const msg = {
     personalizations: [
       {
@@ -46,12 +45,9 @@ export const sendMail = async (
   }
 
   try {
-    console.log('start sending')
     await sgMail.send(msg)
-    console.log('finish sending')
   } catch (err) {
-    console.log(err)
-    if (tries > 2) {
+    if (tries > 0) {
       return sendMail(mail, vincode, vendor, pdfBuffer, tries - 1)
     } else {
       throw new Error('Could not send mail')

@@ -3,7 +3,6 @@ import { NextApiRequest, NextApiResponse } from 'next'
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     const { vincode, mail, vendor } = req.body
-    console.log(vincode, mail, vendor)
     try {
       const response = await getTransactionURL(vincode, mail, 5, vendor)
       res.status(200).send(response)
