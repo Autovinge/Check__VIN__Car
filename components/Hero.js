@@ -10,11 +10,15 @@ const Hero = () => {
       <Box display="flex" justifyContent="center" width={'100%'}>
         <Heading
           mt={'10%'}
-          w="100%"
-          ml="15%"
+          // w="100%"
+          ml="auto"
+    mr="auto"
           mb="20"
+          pl="20px"
+          pr="20px"
           alignItems={'center'}
-          fontSize={{ base: '24px', md: '28px', lg: '30px' }}
+          fontSize={{ base: '16px', md: '20px', lg: '24px' }}
+    textAlign="center"
         >
           VIN check reports for all makes and models of Cars,Trucks,RVs and
           Motorcycles
