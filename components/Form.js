@@ -114,6 +114,32 @@ export default function Form() {
     setVendor('autocheck')
   }
 
+  const handleTransaction = async () => {
+    const getTransactionURL = async () => {
+      try {
+        const res = await fetch('/api/checkout', {
+          method: 'POST',
+
+          headers: {
+            'Content-Type': 'application/json'
+            // 'Content-Type': 'application/x-www-form-urlencoded',
+          },
+          body: JSON.stringify({
+            vendor,
+            vincode: values.vin,
+            mail: values.email
+          })
+        })
+        const data = await res.json()
+        window.location.replace(data.response.transactionUrl)
+      } catch (err) {
+        console.log(err)
+      }
+    }
+
+    await getTransactionURL()
+  }
+
   const onSubmit = async () => {
     setLoading(true)
     setError()
@@ -157,9 +183,21 @@ export default function Form() {
       >
         top VIN number lookup
       </Heading>
-      <HStack m={'10'} justifyContent="center" >
-        <Button size="md" variant="solid" w="full" colorScheme="blue" > Go to checkout </Button>
-      </HStack>
+      {success && (
+        <HStack m={'10'} justifyContent="center">
+          <Button
+            size="md"
+            variant="solid"
+            w="full"
+            colorScheme="blue"
+            onClick={handleTransaction}
+          >
+            {' '}
+            Go to checkout{' '}
+          </Button>
+        </HStack>
+      )}
+
       <HStack m={'10'} justifyContent="center">
         <Center
           w="140px"
