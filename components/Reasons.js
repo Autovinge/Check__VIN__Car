@@ -25,7 +25,7 @@ const Reasons = () => {
           alignItems={'center'}
           fontSize={{ base: '24px', md: '26px', lg: '28px' }}
         >
-          {reason["reasons"]}
+          {reason['reasons']}
           <Box bg="blue.500" h="3px" m="0 auto" w={['90%', '90%', '50%']}></Box>
         </Heading>
       </Box>
@@ -33,43 +33,43 @@ const Reasons = () => {
         <List space={3}>
           <ListItem fontSize={{ base: '15px', md: '18px', lg: '20px' }}>
             <ListIcon border="50%" as={CheckIcon} color="green.500" />
-            {reason["identify"]}
+            {reason['identify']}
           </ListItem>
           <ListItem fontSize={{ base: '15px', md: '18px', lg: '20px' }}>
             <ListIcon border="50%" as={CheckIcon} color="green.500" />
-            {reason["accident"]}
+            {reason['accident']}
           </ListItem>
           <ListItem fontSize={{ base: '15px', md: '18px', lg: '20px' }}>
             <ListIcon border="50%" as={CheckIcon} color="green.500" />
-            {reason["history"]}
+            {reason['history']}
           </ListItem>
           <ListItem fontSize={{ base: '15px', md: '18px', lg: '20px' }}>
             <ListIcon border="50%" as={CheckIcon} color="green.500" />
-            {reason["stolen"]}
+            {reason['stolen']}
           </ListItem>
           <ListItem fontSize={{ base: '15px', md: '18px', lg: '20px' }}>
             <ListIcon border="50%" as={CheckIcon} color="green.500" />
-            {reason["value"]}
+            {reason['value']}
           </ListItem>
           <ListItem fontSize={{ base: '15px', md: '18px', lg: '20px' }}>
             <ListIcon border="50%" as={CheckIcon} color="green.500" />
-            {reason["lien"]}
+            {reason['lien']}
           </ListItem>
           <ListItem fontSize={{ base: '15px', md: '18px', lg: '20px' }}>
             <ListIcon border="50%" as={CheckIcon} color="green.500" />
-            {reason["odemeter"]}
+            {reason['odemeter']}
           </ListItem>
           <ListItem fontSize={{ base: '15px', md: '18px', lg: '20px' }}>
             <ListIcon border="50%" as={CheckIcon} color="green.500" />
-            {reason["rental"]}
+            {reason['rental']}
           </ListItem>
           <ListItem fontSize={{ base: '15px', md: '18px', lg: '20px' }}>
             <ListIcon border="50%" as={CheckIcon} color="green.500" />
-            {reason["disaster"]}
+            {reason['disaster']}
           </ListItem>
           <ListItem fontSize={{ base: '15px', md: '18px', lg: '20px' }}>
             <ListIcon border="50%" as={CheckIcon} color="green.500" />
-            {reason["recall"]}
+            {reason['recall']}
           </ListItem>
         </List>
       </Box>
@@ -83,7 +83,7 @@ const Reasons = () => {
           alignItems={'center'}
           fontSize={{ base: '24px', md: '26px', lg: '28px' }}
         >
-          {reason["why"]}
+          {reason['why']}
         </Heading>
         <Box bg="blue.500" h="3px" w={['80%', '90%', '40%']} m="0 auto"></Box>
         <Box display="flex" justifyContent="center" mt="1.5%">
@@ -92,7 +92,7 @@ const Reasons = () => {
             w={['80%', '90%', '40%']}
             fontSize={{ base: '17px', md: '18px', lg: '20px' }}
           >
-            {reason["why-text"]}
+            {reason['why-text']}
           </Text>
         </Box>
       </Box>
@@ -106,7 +106,7 @@ const Reasons = () => {
           alignItems={'center'}
           fontSize={{ base: '24px', md: '26px', lg: '28px' }}
         >
-          {reason["fast"]}
+          {reason['fast']}
         </Heading>
         <Box bg="blue.500" h="3px" w={['80%', '90%', '40%']} m="0 auto"></Box>
         <Box display="flex" justifyContent="center" mt="1.5%">
@@ -115,7 +115,7 @@ const Reasons = () => {
             w={['80%', '90%', '40%']}
             fontSize={{ base: '17px', md: '18px', lg: '20px' }}
           >
-            {reason["fast-text"]}
+            {reason['fast-text']}
           </Text>
         </Box>
       </Box>

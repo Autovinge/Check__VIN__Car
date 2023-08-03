@@ -188,7 +188,7 @@ export default function Form() {
         alignItems={'center'}
         fontSize={{ base: '22px', md: '24px', lg: '26px' }}
       >
-        {form["form-top"]}
+        {form['form-top']}
       </Heading>
       {success && !error ? (
         <HStack m={'10'} justifyContent="center">
@@ -200,7 +200,7 @@ export default function Form() {
             onClick={handleTransaction}
             isLoading={isUrlLoading}
           >
-            {form["form-payment"]}
+            {form['form-payment']}
           </Button>
         </HStack>
       ) : null}
@@ -217,7 +217,7 @@ export default function Form() {
           flexDirection="column"
         >
           <Text mt="10px" textColor="blue.600" w="full" textAlign="center">
-            {form["form-carfax"]}
+            {form['form-carfax']}
           </Text>
           <Text mt="5px" color="red.300" textAlign="justify">
             20₾
@@ -234,7 +234,7 @@ export default function Form() {
           flexDirection="column"
         >
           <Text mt="10px" textColor="blue.600" w="full" textAlign="center">
-            {form["form-carcheck"]}
+            {form['form-carcheck']}
           </Text>
           <Text mt="5px" color="red.300" textAlign="justify">
             20₾
@@ -242,7 +242,7 @@ export default function Form() {
         </Button>
       </HStack>
       <FormControl isRequired isInvalid={touched.vin && !values.vin} mb={5}>
-        <FormLabel>{form["form-vin"]}</FormLabel>
+        <FormLabel>{form['form-vin']}</FormLabel>
         <Input
           type="text"
           name="vin"
@@ -252,11 +252,11 @@ export default function Form() {
           onChange={handleChange}
           onBlur={onBlur}
         />
-        <FormErrorMessage>{form["form-required"]}</FormErrorMessage>
+        <FormErrorMessage>{form['form-required']}</FormErrorMessage>
       </FormControl>
 
       <FormControl isRequired isInvalid={touched.email && !values.email} mb={5}>
-        <FormLabel>{form["form-email"]}</FormLabel>
+        <FormLabel>{form['form-email']}</FormLabel>
         <Input
           type="email"
           name="email"
@@ -266,7 +266,7 @@ export default function Form() {
           onChange={handleChange}
           onBlur={onBlur}
         />
-        <FormErrorMessage>{form["form-required"]}</FormErrorMessage>
+        <FormErrorMessage>{form['form-required']}</FormErrorMessage>
       </FormControl>
       <Button
         variant="outline"
@@ -277,7 +277,7 @@ export default function Form() {
         onClick={onSubmit}
         isLoading={isLoading}
       >
-        {form["form-check"]}
+        {form['form-check']}
       </Button>
     </Container>
   )

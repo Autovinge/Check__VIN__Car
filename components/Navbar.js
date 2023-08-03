@@ -28,23 +28,22 @@ const Navbar = () => {
           >
             {title}
           </Link>
-
         </Box>
-        <Box
-          mt="40px"
-          mr='52px'
-        >
-          <Select onChange={(e) => handleChange(e)} display={'flex'} justifyContent="flex-end" width="fit-content" cursor="pointer">
+        <Box mt="40px" mr="52px">
+          <Select
+            onChange={(e) => handleChange(e)}
+            display={'flex'}
+            justifyContent="flex-end"
+            width="fit-content"
+            cursor="pointer"
+          >
             <option value="en">EN</option>
             <option value="ka">KA</option>
-
           </Select>
         </Box>
       </Box>
     </Box>
   )
 }
-
-
 
 export default Navbar

@@ -1,5 +1,5 @@
-import React, {useContext} from 'react'
-import {  Heading, Box,  Text, Flex } from '@chakra-ui/react'
+import React, { useContext } from 'react'
+import { Heading, Box, Text, Flex } from '@chakra-ui/react'
 import { BsClock } from 'react-icons/bs'
 import { LiaCoinsSolid } from 'react-icons/lia'
 import { GoShieldCheck } from 'react-icons/go'
@@ -8,7 +8,7 @@ import data from '../locales/langs'
 
 const Hero = () => {
   const { lang, setLang } = useContext(Lang)
-  let {hero} = data[lang]
+  let { hero } = data[lang]
 
   return (
     <Box>
@@ -25,7 +25,7 @@ const Hero = () => {
           fontSize={{ base: '16px', md: '20px', lg: '24px' }}
           textAlign="center"
         >
-    {hero["hero-title"]}
+          {hero['hero-title']}
         </Heading>
       </Box>
       <Box display="flex" w={'full'} h="200px" bg={'blue.400'}>
@@ -41,19 +41,19 @@ const Hero = () => {
           <Box>
             <BsClock />
             <Text fontSize={{ base: '16px', md: '20px', lg: '24px' }} mt="5px">
-    {hero["hero-time"]}
+              {hero['hero-time']}
             </Text>
           </Box>
           <Box>
-            <LiaCoinsSolid style={{marginLeft: "15px"}} />
-            <Text fontSize={{ base: '16px', md: '20px', lg: '24px' }} mt="5px" >
-    {hero["hero-money"]}
-            </Text>
-          </Box>
-          <Box>
-            <GoShieldCheck style={{marginRight: "5px"}}/>
+            <LiaCoinsSolid style={{ marginLeft: '15px' }} />
             <Text fontSize={{ base: '16px', md: '20px', lg: '24px' }} mt="5px">
-    {hero["hero-protect"]}
+              {hero['hero-money']}
+            </Text>
+          </Box>
+          <Box>
+            <GoShieldCheck style={{ marginRight: '5px' }} />
+            <Text fontSize={{ base: '16px', md: '20px', lg: '24px' }} mt="5px">
+              {hero['hero-protect']}
             </Text>
           </Box>
         </Flex>
