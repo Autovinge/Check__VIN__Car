@@ -229,16 +229,12 @@ export default function Form() {
           display="flex"
           flexDirection="column"
         >
-
           <Text mt="10px" textColor="blue.600" w="full" textAlign="center">
             Carcheck
           </Text>
           <Text mt="5px" color="red.300" textAlign="justify">
             20₾
           </Text>
-
-
-    
         </Button>
       </HStack>
       <FormControl isRequired isInvalid={touched.vin && !values.vin} mb={5}>
