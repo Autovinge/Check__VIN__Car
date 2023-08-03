@@ -1,7 +1,22 @@
 import React from 'react'
-import { Box, Link, Text } from '@chakra-ui/react'
+import { Box, Link, Text, Select } from '@chakra-ui/react'
+import { useTranslation } from 'next-i18next'
+import { useRouter } from 'next/router'
 
 const Navbar = () => {
+  const { t } = useTranslation()
+  const router = useRouter()
+
+  const handleChange = (e) => {
+    router.push(
+      {
+        pathname: router.pathname,
+        query: router.query
+      },
+      null,
+      { locale: e.target.value }
+    )
+  }
   return (
     <Box display="flex" w={'full'} h="100px" bg={'blue.400'}>
       <Box
@@ -18,17 +33,21 @@ const Navbar = () => {
             href="/"
             textColor="white"
           >
-            CheckCar
+            {t('hero-title')}
           </Link>
         </Box>
-        <Box display={'flex'} justifyContent="flex-end">
-          <Text mt="40px" mr="58px" fontSize={'2xl'}>
-            EN
-          </Text>
-        </Box>
+        <box>
+          <Select onChange={(e) => handleChange(e)} display={'flex'} justifyContent="flex-end" width="fit-content">
+            <option value="en">EN</option>
+            <option value="ka">KA</option>
+
+          </Select>
+        </box>
       </Box>
     </Box>
   )
 }
+
+
 
 export default Navbar
