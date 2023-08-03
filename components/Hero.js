@@ -45,14 +45,13 @@ const Hero = () => {
             </Text>
           </Box>
           <Box>
-            <LiaCoinsSolid />
-            <Text fontSize={{ base: '16px', md: '20px', lg: '24px' }} mt="5px">
-              SAVE MONEY
+            <LiaCoinsSolid style={{marginLeft: "15px"}} />
+            <Text fontSize={{ base: '16px', md: '20px', lg: '24px' }} mt="5px" >
     {hero["hero-money"]}
             </Text>
           </Box>
           <Box>
-            <GoShieldCheck />
+            <GoShieldCheck style={{marginRight: "5px"}}/>
             <Text fontSize={{ base: '16px', md: '20px', lg: '24px' }} mt="5px">
     {hero["hero-protect"]}
             </Text>
