@@ -1,21 +1,14 @@
-import React from 'react'
-import { Box, Link, Text, Select } from '@chakra-ui/react'
-import { useTranslation } from 'next-i18next'
-import { useRouter } from 'next/router'
+import React, { useContext} from 'react'
+import { Box, Link,  Select } from '@chakra-ui/react'
+import { Lang } from '../context'
+import data from '../locales/langs'
 
 const Navbar = () => {
-  const { t } = useTranslation()
-  const router = useRouter()
+  const { lang, setLang } = useContext(Lang)
+  let {title} = data[lang]
 
   const handleChange = (e) => {
-    router.push(
-      {
-        pathname: router.pathname,
-        query: router.query
-      },
-      null,
-      { locale: e.target.value }
-    )
+    setLang(e.target.value)
   }
   return (
     <Box display="flex" w={'full'} h="100px" bg={'blue.400'}>
@@ -33,8 +26,9 @@ const Navbar = () => {
             href="/"
             textColor="white"
           >
-            {t('hero-title')}
+    {title}
           </Link>
+
         </Box>
         <box>
           <Select onChange={(e) => handleChange(e)} display={'flex'} justifyContent="flex-end" width="fit-content">
