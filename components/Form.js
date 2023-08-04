@@ -56,7 +56,7 @@ export default function Form() {
         position: 'top',
         isClosable: true
       })
-  }, [toast, success,successes])
+  }, [toast, success, successes])
 
   useEffect(() => {
     if (error)
