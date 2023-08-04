@@ -21,7 +21,6 @@ const checkVin = async (
       if (statusCode === 200) return true
       // report not found
       if (statusCode === 404) return false
-
     }
   } catch (err) {
     if (retries > 0) {

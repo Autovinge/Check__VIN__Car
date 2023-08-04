@@ -31,8 +31,15 @@ export default function Form() {
   const [touched, setTouched] = useState({})
   const { lang, setLang } = useContext(Lang)
   const { form, errors, successes } = langData[lang]
-  const { values, isLoading, error, success, validationError, isUrlLoading, serverError } =
-    state
+  const {
+    values,
+    isLoading,
+    error,
+    success,
+    validationError,
+    isUrlLoading,
+    serverError
+  } = state
 
   useEffect(() => {
     if (validationError)
@@ -70,7 +77,6 @@ export default function Form() {
       })
   }, [toast, error, errors])
 
-
   useEffect(() => {
     if (serverError)
       toast({
@@ -81,8 +87,8 @@ export default function Form() {
         position: 'top',
         isClosable: true
       })
-  }, [toast, serverError,errors ])
-  
+  }, [toast, serverError, errors])
+
   const onBlur = ({ target }) =>
     setTouched((prev) => ({ ...prev, [target.name]: true }))
 
@@ -124,7 +130,7 @@ export default function Form() {
     }))
   }
 
-    const setServerError = (text = '') => {
+  const setServerError = (text = '') => {
     setState((prev) => ({
       ...prev,
       serverError: text
