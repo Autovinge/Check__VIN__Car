@@ -176,16 +176,18 @@ export default function Form() {
     }
   }
   return (
-    <Container>
+    <>
       <Heading
         display={'flex'}
-        mt={'10%'}
+        mt={'30px'}
+    mb="30px"
         justifyContent={'center'}
         alignItems={'center'}
-        fontSize={{ base: '22px', md: '24px', lg: '26px' }}
+        fontSize={{ base: '20px', md: '22px', lg: '24px' }}
       >
         top VIN number lookup
       </Heading>
+    <Container maxW={['90%', '90%', '500px']}  backgroundColor="white" borderRadius="5px" pt="10px" pb="2rem" boxShadow="0px 10px 15px -3px rgba(0,0,0,0.1)">
       {success && !error ? (
         <HStack m={'10'} justifyContent="center">
           <Button
@@ -276,5 +278,6 @@ export default function Form() {
         CHECK
       </Button>
     </Container>
+  </>
   )
 }

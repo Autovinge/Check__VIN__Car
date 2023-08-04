@@ -3,7 +3,7 @@ import { Button, Box, Link } from '@chakra-ui/react'
 
 const SampleButton = () => {
   return (
-    <Box display="flex" justifyContent="center" mt="3%">
+    <Box display="flex" justifyContent="center" mt="50px">
       <Link
         href="/Sample.pdf"
         target="_blank"

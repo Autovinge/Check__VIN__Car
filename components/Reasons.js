@@ -1,15 +1,15 @@
 import React from 'react'
-import { List, ListItem, ListIcon, Box, Heading, Text } from '@chakra-ui/react'
+import { List, ListItem, ListIcon, Box, Heading, Text, Container } from '@chakra-ui/react'
 import { CheckIcon } from '@chakra-ui/icons'
 
 const Reasons = () => {
   return (
-    <Box>
+    <Container maxW={['90%', '90%', '800px']} borderRadius="5px" backgroundColor="white" boxShadow="0px 10px 15px -3px rgba(0,0,0,0.1)"  pb="50px" ml="auto" mr="auto" mt="50px">
       <Box
         display="flex"
         justifyContent="center"
         alignItems="center"
-        ml={[8, 3]}
+        // ml={[8, 3]}
       >
         <Heading
           display="flex"
@@ -19,10 +19,11 @@ const Reasons = () => {
           w="100%"
           mb="10"
           alignItems={'center'}
-          fontSize={{ base: '24px', md: '26px', lg: '28px' }}
+           fontSize={{ base: '24px', md: '26px', lg: '28px' }}
+
         >
           10 reason why you must check VIN code
-          <Box bg="blue.500" h="3px" m="0 auto" w={['90%', '90%', '50%']}></Box>
+          <Box bg="blue.500" h="3px" m="0 auto" w={['98%', '80%', '70%']}></Box>
         </Heading>
       </Box>
       <Box display="flex" justifyContent="center" ml="10%">
@@ -81,7 +82,7 @@ const Reasons = () => {
         >
           Why "our company"
         </Heading>
-        <Box bg="blue.500" h="3px" w={['80%', '90%', '40%']} m="0 auto"></Box>
+        <Box bg="blue.500" h="3px" w={['65%', '40%', '35%']} m="0 auto"></Box>
         <Box display="flex" justifyContent="center" mt="1.5%">
           <Text
             disply="flex"
@@ -106,7 +107,7 @@ const Reasons = () => {
         >
           Check fast and easy
         </Heading>
-        <Box bg="blue.500" h="3px" w={['80%', '90%', '40%']} m="0 auto"></Box>
+        <Box bg="blue.500" h="3px" w={['70%', '40%', '35%']} m="0 auto"></Box>
         <Box display="flex" justifyContent="center" mt="1.5%">
           <Text
             disply="flex"
@@ -119,7 +120,7 @@ const Reasons = () => {
           </Text>
         </Box>
       </Box>
-    </Box>
+    </Container>
   )
 }
 
