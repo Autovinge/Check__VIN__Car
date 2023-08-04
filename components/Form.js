@@ -31,7 +31,7 @@ export default function Form() {
   const [touched, setTouched] = useState({})
   const { lang, setLang } = useContext(Lang)
   const { form, errors, successes } = langData[lang]
-  const { values, isLoading, error, success, validationError, isUrlLoading } =
+  const { values, isLoading, error, success, validationError, isUrlLoading, serverError } =
     state
 
   useEffect(() => {
@@ -70,6 +70,19 @@ export default function Form() {
       })
   }, [toast, error, errors])
 
+
+  useEffect(() => {
+    if (serverError)
+      toast({
+        title: 'Error',
+        description: errors['balance'],
+        status: 'error',
+        duration: 3000,
+        position: 'top',
+        isClosable: true
+      })
+  }, [toast, serverError,errors ])
+  
   const onBlur = ({ target }) =>
     setTouched((prev) => ({ ...prev, [target.name]: true }))
 
@@ -111,6 +124,13 @@ export default function Form() {
     }))
   }
 
+    const setServerError = (text = '') => {
+    setState((prev) => ({
+      ...prev,
+      serverError: text
+    }))
+  }
+
   const handleCarfax = () => {
     setVendor('carfax')
   }
@@ -128,7 +148,6 @@ export default function Form() {
       try {
         const res = await fetch('/api/checkout', {
           method: 'POST',
-
           headers: {
             'Content-Type': 'application/json'
           },
@@ -156,16 +175,21 @@ export default function Form() {
 
     const getReportStatus = async (vend, vincode, email) => {
       try {
-        const res = await fetch(
-          `/api/car-info?vendor=${vend}&vincode=${vincode}&receiver=${email}`
-        )
-        const reportStatus = await res.json()
-        if (!reportStatus.reportFound) setError(errors['notFound'])
-        else
-          setState((prev) => ({
-            ...prev,
-            success: successes['found']
-          }))
+        const balance = await fetch('/api/balance')
+        if (balance.statusCode === 200) {
+          const res = await fetch(
+            `/api/car-info?vendor=${vend}&vincode=${vincode}&receiver=${email}`
+          )
+          const reportStatus = await res.json()
+          if (!reportStatus.reportFound) setError(errors['notFound'])
+          else
+            setState((prev) => ({
+              ...prev,
+              success: successes['found']
+            }))
+        } else {
+          setServerError(errors['balance'])
+        }
         setLoading(false)
       } catch (err) {
         setError(errors['server'])
