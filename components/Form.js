@@ -189,8 +189,7 @@ export default function Form() {
           const reportStatus = await res.json()
           if (!reportStatus.reportFound) {
             setError(errors['notFound'])
-          }
-          else {
+          } else {
             setState((prev) => ({
               ...prev,
               success: successes['found']
