@@ -7,7 +7,7 @@ import {
 import getVinInfo from '../../lib/get-vin-info'
 import generatePDF from '../../lib/generatePDF'
 import { sendMail } from '../../lib/mail'
-export default async function (req: NextApiRequest, res: NextApiResponse) {
+export default async function(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     const { PaymentStatus, PaymentId } = req.body
 
@@ -22,7 +22,14 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
         try {
           const doc = await getDocumentById(PaymentId)
           const data = await getVinInfo(doc.vincode, doc.vendor)
-          const pdfBuffer = await generatePDF(data.autocheck_data)
+          let pdfBuffer;
+
+          if (doc.vendor === "carfax") {
+            pdfBuffer = await generatePDF(data.carfax_data)
+
+          } else if (doc.vendor === "autocheck") {
+            pdfBuffer = await generatePDF(data.autocheck_data)
+          }
           await sendMail(doc.mail, doc.vincode, doc.vendor, pdfBuffer)
           await updateSentMail(PaymentId)
           res.send({})
@@ -32,3 +39,9 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
     }
   }
 }
+
+export const config = {
+  api: {
+    externalResolver: true,
+  },
+};
