@@ -11,22 +11,28 @@ const Hero = () => {
   let { hero } = data[lang]
 
   return (
-    <Box>
+    <Box >
       <Box
         textColor="black"
         display="flex"
         justifyContent="center"
-        width={'100%'}
+        w="fit-content"
+        m="0 auto"
+        mt="-180px"
+
+    mb="50px"
       >
         <Heading
           mt={'50px'}
+        border="1px solid white"
           // w="100%"
           ml="auto"
           mr="auto"
           mb="50px"
-          pl="20px"
-          color="#504A4B"
-          pr="20px"
+    p="30px 40px"
+    borderRadius="10px"
+          color="white"
+          fontWeight="light"
           alignItems={'center'}
           fontSize={{ base: '16px', md: '20px', lg: '24px' }}
           textAlign="center"
