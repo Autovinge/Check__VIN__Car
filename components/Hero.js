@@ -19,7 +19,6 @@ const Hero = () => {
         w="fit-content"
         m="0 auto"
         mt="-180px"
-        mb="50px"
       >
         <Heading
           mt={'50px'}
@@ -45,6 +44,7 @@ const Hero = () => {
         maxW="1200px"
         ml="auto"
         mr="auto"
+        mb="100px"
       >
         <Flex
           w={{ base: '100%', md: '80%', lg: '100%' }}
