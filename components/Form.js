@@ -216,7 +216,7 @@ export default function Form() {
     <Box backgroundImage="/car.png"
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
-      height="850px"
+      height="780px"
       display="flex"
       justifyContent="center"
     >

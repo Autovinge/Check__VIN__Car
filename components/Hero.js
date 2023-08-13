@@ -19,18 +19,16 @@ const Hero = () => {
         w="fit-content"
         m="0 auto"
         mt="-180px"
-
-    mb="50px"
+        mb="50px"
       >
         <Heading
           mt={'50px'}
-        border="1px solid white"
-          // w="100%"
+          border="1px solid white"
           ml="auto"
           mr="auto"
           mb="50px"
-    p="30px 40px"
-    borderRadius="10px"
+          p="30px 40px"
+          borderRadius="10px"
           color="white"
           fontWeight="light"
           alignItems={'center'}
@@ -40,31 +38,35 @@ const Hero = () => {
           {hero['hero-title']}
         </Heading>
       </Box>
-      <Box display="flex" w={'full'} h="200px" bg={'blue.400'}>
+      <Box display="flex"
+        align="center" mt="100px" maxW="1200px" ml="auto" mr="auto">
         <Flex
-          w={{ base: '100%', md: '80%', lg: '60%' }}
+          w={{ base: '100%', md: '80%', lg: '100%' }}
           ml="auto"
           mr="auto"
-          fontSize={{ base: '80px', md: '95px', lg: '120px' }}
+          fontSize={{ base: '80px', md: '95px', lg: '90px' }}
           textColor="white"
-          justify="space-around"
           align="center"
+
+          // justify="space-evenly"
+
+
         >
-          <Box>
+          <Box backgroundColor="blue" border="1px solid white" borderRadius="10px" h="200px" w="200px" display="flex" flexDirection="column" justifyContent="center" alignItems="center" ml="auto" mr="auto">
             <BsClock />
-            <Text fontSize={{ base: '16px', md: '20px', lg: '24px' }} mt="5px">
+            <Text fontSize={{ base: '16px', md: '18px', lg: '20px' }} mt="15px">
               {hero['hero-time']}
             </Text>
           </Box>
-          <Box>
+          <Box backgroundColor="blue" border="1px solid white" borderRadius="10px" h="200px" w="200px" display="flex" flexDirection="column" justifyContent="center" alignItems="center" ml="auto" mr="auto">
             <LiaCoinsSolid style={{ marginLeft: '15px' }} />
-            <Text fontSize={{ base: '16px', md: '20px', lg: '24px' }} mt="5px">
+            <Text fontSize={{ base: '16px', md: '18px', lg: '20px' }} mt="15px">
               {hero['hero-money']}
             </Text>
           </Box>
-          <Box>
+          <Box backgroundColor="blue" border="1px solid white" borderRadius="10px" h="200px" w="200px" display="flex" flexDirection="column" justifyContent="center" alignItems="center" ml="auto" mr="auto">
             <GoShieldCheck style={{ marginRight: '5px' }} />
-            <Text fontSize={{ base: '16px', md: '20px', lg: '24px' }} mt="5px">
+            <Text fontSize={{ base: '16px', md: '18px', lg: '20px' }} mt="15px">
               {hero['hero-protect']}
             </Text>
           </Box>
