@@ -16,9 +16,9 @@ const Hero = () => {
         textColor="black"
         display="flex"
         justifyContent="center"
-        w={{ base: "90%", md: "fit-content", lg: 'fit-content' }}
+        w={{ base: '90%', md: 'fit-content', lg: 'fit-content' }}
         m="0 auto"
-        mt={{ base: "-90px", md: "-150px", lg: "-180px" }}
+        mt={{ base: '-90px', md: '-150px', lg: '-180px' }}
       >
         <Heading
           mt={'50px'}
@@ -42,26 +42,30 @@ const Hero = () => {
       <Box
         display="flex"
         align="center"
-        mt={{ base: '10px', md: '50px', lg: "100px" }}
+        mt={{ base: '10px', md: '50px', lg: '100px' }}
         maxW="1200px"
         ml="auto"
         mr="auto"
         mb="60px"
       >
         <Flex
-          w={{ base: "100%", sm: '100%', md: '100%', lg: '100%' }}
-          backgroundColor={{ base: '#3874CB', sm: '#3874CB', md: 'transparent', lg: "transparent" }}
+          w={{ base: '100%', sm: '100%', md: '100%', lg: '100%' }}
+          backgroundColor={{
+            base: '#3874CB',
+            sm: '#3874CB',
+            md: 'transparent',
+            lg: 'transparent'
+          }}
           fontSize={{ base: '70px', md: '95px', lg: '90px' }}
           textColor="white"
           align="center"
-
           justifyContent="space-evenly"
         >
           <Box
             backgroundColor="#3874CB"
             borderRadius="10px"
             h="200px"
-            w={{ base: '30%', md: "200px", lg: "200px" }}
+            w={{ base: '30%', md: '200px', lg: '200px' }}
             display="flex"
             flexDirection="column"
             justifyContent="center"
@@ -78,7 +82,7 @@ const Hero = () => {
             backgroundColor="#3874CB"
             borderRadius="10px"
             h="200px"
-            w={{ base: '30%', md: "200px", lg: "200px" }}
+            w={{ base: '30%', md: '200px', lg: '200px' }}
             display="flex"
             flexDirection="column"
             justifyContent="center"
@@ -95,7 +99,7 @@ const Hero = () => {
             backgroundColor="#3874CB"
             borderRadius="10px"
             h="200px"
-            w={{ base: '30%', md: "200px", lg: "200px" }}
+            w={{ base: '30%', md: '200px', lg: '200px' }}
             display="flex"
             flexDirection="column"
             justifyContent="center"

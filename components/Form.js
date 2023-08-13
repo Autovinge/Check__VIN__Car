@@ -221,7 +221,7 @@ export default function Form() {
       backgroundSize="contain"
       ml="auto"
       mr="auto"
-      h={{ base: "700px", md: "700px", lg: "780px" }}
+      h={{ base: '700px', md: '700px', lg: '780px' }}
       display="flex"
       justifyContent="center"
     >
@@ -229,7 +229,7 @@ export default function Form() {
         w="380px"
         pb="40px"
         h="fit-content"
-        mt={{ base: '50px', md: "100px", lg: '150px' }}
+        mt={{ base: '50px', md: '100px', lg: '150px' }}
         borderRadius="20px"
         backdropFilter="blur(10px)"
         backgroundColor="rgba(100,100,100,.2)"
