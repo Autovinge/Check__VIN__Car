@@ -27,8 +27,7 @@ const AppContainer = ({ children }) => {
       >
         <Navbar />
         <Box background="linear-gradient(#121937,#0B0719)">
-
-              <Form />
+          <Form />
           <Hero />
           <Reasons />
           <SampleButton />

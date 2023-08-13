@@ -213,15 +213,23 @@ export default function Form() {
     }
   }
   return (
-    <Box backgroundImage="/car.png"
+    <Box
+      backgroundImage="/car.png"
       backgroundPosition="center"
       backgroundRepeat="no-repeat"
       height="780px"
       display="flex"
       justifyContent="center"
     >
-
-      <Box w="380px" pb="40px"  h="fit-content" mt="150px" borderRadius="20px" backdropFilter="blur(10px)" backgroundColor="rgba(100,100,100,.2)">
+      <Box
+        w="380px"
+        pb="40px"
+        h="fit-content"
+        mt="150px"
+        borderRadius="20px"
+        backdropFilter="blur(10px)"
+        backgroundColor="rgba(100,100,100,.2)"
+      >
         <Heading
           color="#504A4B"
           textColor="white"
