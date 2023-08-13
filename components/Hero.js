@@ -22,7 +22,7 @@ const Hero = () => {
       >
         <Heading
           mt={'50px'}
-          border="1px solid white"
+          border="1px solid rgba(255,255,255, 0.2)"
           ml="auto"
           mr="auto"
           mb="50px"
@@ -33,6 +33,8 @@ const Hero = () => {
           alignItems={'center'}
           fontSize={{ base: '16px', md: '20px', lg: '24px' }}
           textAlign="center"
+        backdropFilter="blur(1px)"
+        backgroundColor="rgba(255,255,255,.1)"
         >
           {hero['hero-title']}
         </Heading>
