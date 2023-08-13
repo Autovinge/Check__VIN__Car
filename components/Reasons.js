@@ -9,7 +9,6 @@ import {
   Text,
   Container
 } from '@chakra-ui/react'
-import { CheckIcon } from '@chakra-ui/icons'
 import { Lang } from '../context'
 import data from '../locales/langs'
 
@@ -19,7 +18,7 @@ const Reasons = () => {
   return (
     <Container
       textColor="white"
-      maxW={['90%', '90%', '1150px']}
+      maxW='1150px'
       borderRadius="5px"
       boxShadow="0px 10px 15px -3px rgba(0,0,0,0.1)"
       // pb="70px"
@@ -52,81 +51,116 @@ const Reasons = () => {
           {reason['reasons']}
           <Box bg="blue.500" h="3px" m="0 auto" w={['90%', '90%', '65%']}></Box>
         </Heading>
-        <Box display="flex" justifyContent="center" w="full" ml="7%" pb="40px">
-          <Box w="50%">
+        <Box display="flex" alignItems="center" justifyContent="center" w="full" flexDirection={{ base: 'column', sm: 'column', md: 'row', lg: 'row' }} pb="40px">
+          <Box w={{ base: '100%', sm: '100%', md: '48%', lg: '48%' }}
+            p=" 0 20px"
+          >
             <List space={3}>
               <ListItem
-                fontSize={{ base: '15px', md: '18px', lg: '16px' }}
+                fontSize={{ base: '15px', md: '15px', lg: '16px' }}
                 mb="10px"
+                display="flex"
+                flexDirection="row"
+                alignItems="center"
               >
-                <ListIcon border="50%" as={CheckIcon} color="green.500" />
+                <Box backgroundColor="#BA4F0E" w="10px" h="10px" borderRadius="50%" mr="15px" />
                 {reason['identify']}
               </ListItem>
               <ListItem
-                fontSize={{ base: '15px', md: '18px', lg: '16px' }}
+                fontSize={{ base: '15px', md: '15px', lg: '16px' }}
                 mb="10px"
+                display="flex"
+                flexDirection="row"
+                alignItems="center"
               >
-                <ListIcon border="50%" as={CheckIcon} color="green.500" />
+                <Box backgroundColor="#BA4F0E" w="10px" h="10px" borderRadius="50%" mr="15px" />
                 {reason['accident']}
               </ListItem>
               <ListItem
-                fontSize={{ base: '15px', md: '18px', lg: '16px' }}
+                fontSize={{ base: '15px', md: '15px', lg: '16px' }}
                 mb="10px"
+                display="flex"
+                flexDirection="row"
+                alignItems="center"
               >
-                <ListIcon border="50%" as={CheckIcon} color="green.500" />
+                <Box backgroundColor="#BA4F0E" w="10px" h="10px" borderRadius="50%" mr="15px" />
                 {reason['history']}
               </ListItem>
               <ListItem
-                fontSize={{ base: '15px', md: '18px', lg: '16px' }}
+                fontSize={{ base: '15px', md: '15px', lg: '16px' }}
                 mb="10px"
+                display="flex"
+                flexDirection="row"
+                alignItems="center"
               >
-                <ListIcon border="50%" as={CheckIcon} color="green.500" />
+                <Box backgroundColor="#BA4F0E" w="10px" h="10px" borderRadius="50%" mr="15px" />
                 {reason['stolen']}
               </ListItem>
               <ListItem
-                fontSize={{ base: '15px', md: '18px', lg: '16px' }}
+                fontSize={{ base: '15px', md: '15px', lg: '16px' }}
                 mb="10px"
+                display="flex"
+                flexDirection="row"
+                alignItems="center"
               >
-                <ListIcon border="50%" as={CheckIcon} color="green.500" />
+                <Box backgroundColor="#BA4F0E" w="10px" h="10px" borderRadius="50%" mr="15px" />
                 {reason['rental']}
               </ListItem>
             </List>
           </Box>
-          <Box w="50%">
+          <Box w={{ base: '100%', sm: '100%', md: '48%', lg: '48%' }}
+
+            p=" 0 20px"
+          >
             <List space={3}>
               <ListItem
-                fontSize={{ base: '15px', md: '18px', lg: '16px' }}
+                fontSize={{ base: '15px', md: '15px', lg: '16px' }}
                 mb="10px"
+                display="flex"
+                flexDirection="row"
+                alignItems="center"
               >
-                <ListIcon border="50%" as={CheckIcon} color="green.500" />
+                <Box backgroundColor="#BA4F0E" w="10px" h="10px" borderRadius="50%" mr="15px" />
                 {reason['lien']}
               </ListItem>
               <ListItem
-                fontSize={{ base: '15px', md: '18px', lg: '16px' }}
+                fontSize={{ base: '15px', md: '15px', lg: '16px' }}
                 mb="10px"
+                display="flex"
+                flexDirection="row"
+                alignItems="center"
               >
-                <ListIcon border="50%" as={CheckIcon} color="green.500" />
+                <Box backgroundColor="#BA4F0E" w="10px" h="10px" borderRadius="50%" mr="15px" />
                 {reason['odemeter']}
               </ListItem>
               <ListItem
-                fontSize={{ base: '15px', md: '18px', lg: '16px' }}
+                fontSize={{ base: '15px', md: '15px', lg: '16px' }}
                 mb="10px"
+                display="flex"
+                flexDirection="row"
+                alignItems="center"
               >
-                <ListIcon border="50%" as={CheckIcon} color="green.500" />
+                <Box backgroundColor="#BA4F0E" w="10px" h="10px" borderRadius="50%" mr="15px" />
                 {reason['value']}
               </ListItem>
               <ListItem
-                fontSize={{ base: '15px', md: '18px', lg: '16px' }}
+                fontSize={{ base: '15px', md: '15px', lg: '16px' }}
                 mb="10px"
+                display="flex"
+                flexDirection="row"
+                alignItems="center"
               >
-                <ListIcon border="50%" as={CheckIcon} color="green.500" />
+                <Box backgroundColor="#BA4F0E" w="10px" h="10px" borderRadius="50%" mr="15px" />
                 {reason['disaster']}
               </ListItem>
               <ListItem
-                fontSize={{ base: '15px', md: '18px', lg: '16px' }}
+                fontSize={{ base: '15px', md: '15px', lg: '16px' }}
                 mb="10px"
+                display="flex"
+                flexDirection="row"
+                alignItems="center"
               >
-                <ListIcon border="50%" as={CheckIcon} color="green.500" />
+                <Box backgroundColor="#BA4F0E" w="10px" h="10px" borderRadius="50%" mr="15px" />
                 {reason['recall']}
               </ListItem>
             </List>
@@ -143,7 +177,7 @@ const Reasons = () => {
             mt={'5%'}
             w="100%"
             alignItems={'center'}
-            fontSize={{ base: '24px', md: '26px', lg: '28px' }}
+            fontSize={{ base: '24px', md: '15px', lg: '28px' }}
             fontWeight="thiner"
           >
             {reason['why']}

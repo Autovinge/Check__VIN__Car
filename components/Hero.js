@@ -46,7 +46,7 @@ const Hero = () => {
         maxW="1200px"
         ml="auto"
         mr="auto"
-        mb="100px"
+        mb="60px"
       >
         <Flex
           w={{ base: "100%", sm: '100%', md: '100%', lg: '100%' }}
