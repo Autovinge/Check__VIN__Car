@@ -214,7 +214,7 @@ export default function Form() {
   }
   return (
     <Box
-      backgroundImage="/car.png"
+      backgroundImage="/car1.png"
       backgroundPosition={{ base: 'bottom', md: 'bottom', lg: 'center' }}
       backgroundRepeat="no-repeat"
       // backgroundAttachment="fixed"

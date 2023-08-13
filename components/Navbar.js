@@ -11,12 +11,12 @@ const Navbar = () => {
     setLang(e.target.value)
   }
   return (
-    <Box textColor="white" display="flex" maxW='full' h="100px" bg={'blue.400'}>
+    <Box textColor="white" display="flex" maxW="full" h="100px" bg={'blue.400'}>
       <Box
         display="flex"
         justifyContent={'space-between'}
         alignItems="center"
-        w='1400px'
+        w="1400px"
         m="0 auto"
       >
         <Box>
@@ -27,7 +27,6 @@ const Navbar = () => {
               top="-24px"
               left="36px"
               h="65px"
-
             />
             <Link
               // mt="40px"
@@ -40,7 +39,7 @@ const Navbar = () => {
             </Link>
           </Box>
         </Box>
-        <Box  mr="52px">
+        <Box mr="52px">
           <Select
             onChange={(e) => handleChange(e)}
             display={'flex'}
