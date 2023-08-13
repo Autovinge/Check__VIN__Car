@@ -4,6 +4,7 @@ import {
   ListItem,
   ListIcon,
   Box,
+  Flex,
   Heading,
   Text,
   Container
@@ -32,8 +33,9 @@ const Reasons = () => {
         justifyContent="center"
         alignItems="center"
         flexDirection="column"
-        backgroundColor="blue"
         borderRadius="10px"
+        boxShadow="0px 4px 10px 0px #0000000D"
+        backgroundColor="#FFFFFF0D"
       >
         <Heading
           display="flex"
@@ -131,55 +133,61 @@ const Reasons = () => {
           </Box>
         </Box>
       </Box>
-      <Box>
-        <Heading
-          display="flex"
-          justifyContent="center"
-          flexDirection="column"
-          mt={'5%'}
-          w="100%"
-          alignItems={'center'}
-          fontSize={{ base: '24px', md: '26px', lg: '28px' }}
-        >
-          {reason['why']}
-        </Heading>
+      <Flex maxW="1000px" m="0 auto" mt="100px" justifyContent="space-between" >
+        <Box borderRadius="10px" bg="#FFFFFF0D" boxShadow="0px 4px 10px 0px #0000000D" maxW="45%" p="2rem" >
 
-        <Box bg="blue.500" h="3px" m="0 auto" w={['65%', '40%', '35%']}></Box>
-        <Box display="flex" justifyContent="center" mt="1.5%">
-          <Text
-            disply="flex"
-            w={['80%', '90%', '40%']}
-            fontSize={{ base: '17px', md: '18px', lg: '20px' }}
+          <Heading
+            display="flex"
+            justifyContent="center"
+            flexDirection="column"
+            mt={'5%'}
+            w="100%"
+            alignItems={'center'}
+            fontSize={{ base: '24px', md: '26px', lg: '28px' }}
+            fontWeight="thiner"
           >
-            {reason['why-text']}
-          </Text>
-        </Box>
-      </Box>
-      <Box>
-        <Heading
-          display="flex"
-          justifyContent="center"
-          flexDirection="column"
-          mt={'5%'}
-          w="100%"
-          alignItems={'center'}
-          fontSize={{ base: '24px', md: '26px', lg: '28px' }}
-        >
-          {reason['fast']}
-        </Heading>
+            {reason['why']}
+          </Heading>
 
-        <Box bg="blue.500" h="3px" w={['65%', '40%', '35%']} m="0 auto"></Box>
-        <Box display="flex" justifyContent="center" mt="1.5%">
-          <Text
-            disply="flex"
-            w={['80%', '90%', '40%']}
-            fontSize={{ base: '17px', md: '18px', lg: '20px' }}
-          >
-            {reason['fast-text']}
-          </Text>
+          <Box bg="blue.500" h="3px" w={['65%', '40%', '35%']} m="0 auto"></Box>
+          <Box display="flex" justifyContent="center" mt="1.5%" p="0 25px" mt="20px">
+            <Text
+              disply="flex"
+              textAlign="center"
+              fontSize={{ base: '17px', md: '18px', lg: '18px' }}
+            >
+              {reason['why-text']}
+            </Text>
+          </Box>
         </Box>
-      </Box>
-    </Container>
+        <Box bg="#FFFFFF0D" boxShadow="0px 4px 10px 0px #0000000D" borderRadius="10px" maxW="45%" p="2rem">
+          <Heading
+            display="flex"
+            justifyContent="center"
+            flexDirection="column"
+            mt={'5%'}
+            w="100%"
+            alignItems={'center'}
+            fontWeight="thiner"
+            fontSize={{ base: '24px', md: '26px', lg: '28px' }}
+
+          >
+            {reason['fast']}
+          </Heading>
+
+          <Box bg="blue.500" h="3px" w={['65%', '40%', '35%']} m="0 auto"></Box>
+          <Box display="flex" justifyContent="center" mt="20px" p="0 25px" >
+            <Text
+              disply="flex"
+              textAlign="center"
+              fontSize={{ base: '17px', md: '18px', lg: '18px' }}
+            >
+              {reason['fast-text']}
+            </Text>
+          </Box>
+        </Box>
+      </Flex>
+    </Container >
   )
 }
 
