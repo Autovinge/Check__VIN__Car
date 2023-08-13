@@ -16,9 +16,9 @@ const Hero = () => {
         textColor="black"
         display="flex"
         justifyContent="center"
-        w="fit-content"
+        w={{ base: "90%", md: "fit-content", lg: 'fit-content' }}
         m="0 auto"
-        mt="-180px"
+        mt={{ base: "-90px", md: "-150px", lg: "-180px" }}
       >
         <Heading
           mt={'50px'}
@@ -26,15 +26,15 @@ const Hero = () => {
           ml="auto"
           mr="auto"
           mb="50px"
-          p="30px 40px"
+          p={{ base: '20px 5px', md: '30px 40px', lg: '30px 40px' }}
           borderRadius="10px"
           color="white"
           fontWeight="light"
           alignItems={'center'}
-          fontSize={{ base: '16px', md: '20px', lg: '24px' }}
+          fontSize={{ base: '15px', md: '20px', lg: '22px' }}
           textAlign="center"
-        backdropFilter="blur(1px)"
-        backgroundColor="rgba(255,255,255,.1)"
+          backdropFilter="blur(1px)"
+          backgroundColor="rgba(255,255,255,.1)"
         >
           {hero['hero-title']}
         </Heading>
@@ -42,27 +42,26 @@ const Hero = () => {
       <Box
         display="flex"
         align="center"
-        mt="100px"
+        mt={{ base: '10px', md: '50px', lg: "100px" }}
         maxW="1200px"
         ml="auto"
         mr="auto"
         mb="100px"
       >
         <Flex
-          w={{ base: '100%', md: '80%', lg: '100%' }}
-          ml="auto"
-          mr="auto"
-          fontSize={{ base: '80px', md: '95px', lg: '90px' }}
+          w={{ base: "100%", sm: '100%', md: '100%', lg: '100%' }}
+          backgroundColor={{ base: '#3874CB', sm: '#3874CB', md: 'transparent', lg: "transparent" }}
+          fontSize={{ base: '70px', md: '95px', lg: '90px' }}
           textColor="white"
           align="center"
 
-          // justify="space-evenly"
+          justifyContent="space-evenly"
         >
           <Box
             backgroundColor="#3874CB"
             borderRadius="10px"
             h="200px"
-            w="200px"
+            w={{ base: '30%', md: "200px", lg: "200px" }}
             display="flex"
             flexDirection="column"
             justifyContent="center"
@@ -79,7 +78,7 @@ const Hero = () => {
             backgroundColor="#3874CB"
             borderRadius="10px"
             h="200px"
-            w="200px"
+            w={{ base: '30%', md: "200px", lg: "200px" }}
             display="flex"
             flexDirection="column"
             justifyContent="center"
@@ -96,7 +95,7 @@ const Hero = () => {
             backgroundColor="#3874CB"
             borderRadius="10px"
             h="200px"
-            w="200px"
+            w={{ base: '30%', md: "200px", lg: "200px" }}
             display="flex"
             flexDirection="column"
             justifyContent="center"
