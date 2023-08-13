@@ -49,7 +49,11 @@ const Reasons = () => {
           fontWeight="lighter"
         >
           {reason['reasons']}
-          <Box bg="blue.500" h="3px" m="0 auto" w={['90%', '90%', '65%']}></Box>
+          <Box
+            bg="linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 46.38%, rgba(255, 255, 255, 0) 100%)"
+            h="1px"
+            m="5px auto 0 auto"
+            w={['90%', '90%', '65%']}></Box>
         </Heading>
         <Box
           display="flex"
@@ -243,7 +247,6 @@ const Reasons = () => {
         justifyContent={['space-between', 'space-between', 'space-between']}
         // alignItems="center"
         alignItems={['center', 'space-between', 'normal']}
-
         flexDirection={['column', 'column', 'row']}
       >
         <Box
@@ -259,6 +262,7 @@ const Reasons = () => {
             justifyContent="center"
             flexDirection="column"
             mt={'5%'}
+            mb="5px"
             w="100%"
             alignItems={'center'}
             fontSize={{ base: '24px', md: '25px', lg: '28px' }}
@@ -267,13 +271,14 @@ const Reasons = () => {
             {reason['why']}
           </Heading>
 
-          <Box bg="blue.500" h="3px" w={['65%', '40%', '35%']} m="0 auto"></Box>
+
           <Box
-            display="flex"
-            justifyContent="center"
-            p="0 25px"
-            mt="20px"
-          >
+            bg="linear-gradient(90deg, rgba(255, 102, 0, 0) 0%, #FF6600 50.23%, rgba(255, 102, 0, 0) 100%) "
+
+            h="1px"
+            w={['65%', '40%', '65%']}
+            m="0 auto"></Box>
+          <Box display="flex" justifyContent="center" p="0 25px" mt="20px">
             <Text
               disply="flex"
               textAlign="center"
@@ -295,6 +300,7 @@ const Reasons = () => {
             justifyContent="center"
             flexDirection="column"
             mt={'5%'}
+            mb="5px"
             w="100%"
             alignItems={'center'}
             fontWeight="thiner"
@@ -303,7 +309,12 @@ const Reasons = () => {
             {reason['fast']}
           </Heading>
 
-          <Box bg="blue.500" h="3px" w={['65%', '40%', '35%']} m="0 auto"></Box>
+          <Box
+            bg="linear-gradient(90deg, rgba(255, 102, 0, 0) 0%, #FF6600 50.23%, rgba(255, 102, 0, 0) 100%) "
+            h="1px"
+            w={['65%', '40%', '65%']}
+            m="0 auto"></Box>
+
           <Box display="flex" justifyContent="center" mt="20px" p="0 25px">
             <Text
               disply="flex"

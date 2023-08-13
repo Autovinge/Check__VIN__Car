@@ -8,15 +8,22 @@ const Footer = () => {
   let { title } = data[lang]
   return (
     <>
-      <Box mt="auto" h="250px" bg="#2D5697" maxW='full' display="flex" flexDirection="row">
+      <Box
+        mt="auto"
+        h="250px"
+        bg="#2D5697"
+        maxW="full"
+        display="flex"
+        flexDirection="row"
+      >
         <Box
           w="1400px"
           m="auto"
           display="flex"
-          justifyContent='flex-start'
+          justifyContent="flex-start"
           alignItems="center"
         >
-          <Box w='300px' m="auto 0">
+          <Box w="300px" m="auto 0">
             <Box display="flex" position="relative">
               <Image
                 src="/circle.svg"
@@ -25,19 +32,13 @@ const Footer = () => {
                 left="36px"
                 h="65px"
               />
-              <Text ml="51px" color="white">{title}</Text>
+              <Text ml="51px" color="white">
+                {title}
+              </Text>
             </Box>
           </Box>
-          <Box
-            display="flex"
-            flexDirection="column"
-            h="100px"
-          >
-            <Box
-              display="flex"
-              alignItems="space-evenly"
-              h="80%"
-            >
+          <Box display="flex" flexDirection="column" h="100px">
+            <Box display="flex" alignItems="space-evenly" h="80%">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 height="1.5em"
@@ -79,8 +80,9 @@ const Footer = () => {
           </Box>
         </Box>
       </Box>
-      <Text textAlign="center" color="white" bg="#2D5697" pb="10px" mt="-30px">copyright</Text>
-
+      <Text textAlign="center" color="white" bg="#2D5697" pb="10px" mt="-30px">
+        copyright
+      </Text>
     </>
   )
 }
