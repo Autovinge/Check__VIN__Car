@@ -25,19 +25,6 @@ const Reasons = () => {
       ml="auto"
       mr="auto"
       mt="50px"
-    position="relative"
-    zIndex="1"
-    _before={{
-      content: '""',
-      position: 'absolute',
-      h: '20px',
-      bg:"red",
-      left: '100%',
-      bottom: '100%',
-      top: '10%',
-      w:"100%"
-
-    }}
     >
       <Box
         display="flex"
