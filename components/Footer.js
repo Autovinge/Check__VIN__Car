@@ -10,7 +10,7 @@ const Footer = () => {
     <>
       <Box
         mt="auto"
-        h="250px"
+        h={["150px", '250px', '250px']}
         bg="#2D5697"
         maxW="full"
         display="flex"
@@ -23,21 +23,21 @@ const Footer = () => {
           justifyContent="flex-start"
           alignItems="center"
         >
-          <Box w="300px" m="auto 0">
-            <Box display="flex" position="relative">
+          <Box maxW="300px" m="auto 0" >
+            <Box display="flex" position="relative" >
               <Image
                 src="/circle.svg"
                 position="absolute"
-                top="-24px"
-                left="36px"
-                h="65px"
+                top={['-40px', '-24px', '-24px']}
+                left={['20px', '36px', '36px']}
+                h={['35px', '65px', '65px']}
               />
-              <Text ml="51px" color="white">
+              <Text ml={['30px', '51px', '51px']} color="white" fontSize={['12px', '16px', '16px']} mt={['-1.8rem', '0', '0']}>
                 {title}
               </Text>
             </Box>
           </Box>
-          <Box display="flex" flexDirection="column" h="100px">
+          <Box ml={['50px', '4rem', '4rem']} display="flex" flexDirection="column" h="70px">
             <Box display="flex" alignItems="space-evenly" h="80%">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +49,7 @@ const Footer = () => {
               </svg>
               <Link
                 href="/"
-                fontSize={{ base: '15px', md: '16px', lg: '16px' }}
+                fontSize={{ base: '14px', md: '15px', lg: '16px' }}
                 ml="10px"
                 textColor="white"
               >
@@ -69,7 +69,7 @@ const Footer = () => {
               </svg>
               <Link
                 href="/"
-                fontSize={{ base: '14px', md: '16px', lg: '16px' }}
+                fontSize={{ base: '14px', md: '15px', lg: '16px' }}
                 ml="10px"
                 textColor="white"
                 mt="5px"
@@ -80,9 +80,15 @@ const Footer = () => {
           </Box>
         </Box>
       </Box>
-      <Text textAlign="center" color="white" bg="#2D5697" pb="10px" mt="-30px">
+    <Box color="white" bg="#2D5697" pb="10px" display="flex" flexDirection="row" fontSize="13px" >
+      <Text textAlign={['center', 'end', 'end']} w="50%" mr={['5px', '40px', '40px']}>
         copyright
       </Text>
+      <Text  textAlign={['center', 'start', 'start']}  w="50%">
+        all rights reserved
+      </Text>
+
+</Box>
     </>
   )
 }
