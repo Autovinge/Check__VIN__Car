@@ -25,6 +25,19 @@ const Reasons = () => {
       ml="auto"
       mr="auto"
       mt="50px"
+    position="relative"
+    zIndex="1"
+    _before={{
+      content: '""',
+      position: 'absolute',
+      h: '20px',
+      bg:"red",
+      left: '100%',
+      bottom: '100%',
+      top: '10%',
+      w:"100%"
+
+    }}
     >
       <Box
         display="flex"
@@ -53,7 +66,8 @@ const Reasons = () => {
             bg="linear-gradient(90deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.5) 46.38%, rgba(255, 255, 255, 0) 100%)"
             h="1px"
             m="5px auto 0 auto"
-            w={['90%', '90%', '65%']}></Box>
+            w={['90%', '90%', '65%']}
+          ></Box>
         </Heading>
         <Box
           display="flex"
@@ -271,13 +285,12 @@ const Reasons = () => {
             {reason['why']}
           </Heading>
 
-
           <Box
             bg="linear-gradient(90deg, rgba(255, 102, 0, 0) 0%, #FF6600 50.23%, rgba(255, 102, 0, 0) 100%) "
-
             h="1px"
             w={['65%', '40%', '65%']}
-            m="0 auto"></Box>
+            m="0 auto"
+          ></Box>
           <Box display="flex" justifyContent="center" p="0 25px" mt="20px">
             <Text
               disply="flex"
@@ -313,7 +326,8 @@ const Reasons = () => {
             bg="linear-gradient(90deg, rgba(255, 102, 0, 0) 0%, #FF6600 50.23%, rgba(255, 102, 0, 0) 100%) "
             h="1px"
             w={['65%', '40%', '65%']}
-            m="0 auto"></Box>
+            m="0 auto"
+          ></Box>
 
           <Box display="flex" justifyContent="center" mt="20px" p="0 25px">
             <Text
@@ -326,6 +340,7 @@ const Reasons = () => {
           </Box>
         </Box>
       </Flex>
+
     </Container>
   )
 }
