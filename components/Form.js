@@ -15,6 +15,7 @@ import { Lang } from '../context'
 import langData from '../locales/langs'
 import { FaBarcode } from 'react-icons/fa'
 import { CiMail } from 'react-icons/ci'
+import { getEnvVar } from '../lib/getEnvVar'
 
 const initValues = {
   vin: '',
@@ -158,7 +159,7 @@ export default function Form() {
           },
           body: JSON.stringify({
             vendor,
-            vincode: values.vin,
+            vincode: values.vin.toUpperCase(),
             mail: values.email
           })
         })
@@ -183,7 +184,7 @@ export default function Form() {
         const balance = await fetch('/api/balance')
         if (balance.status === 200) {
           const res = await fetch(
-            `/api/car-info?vendor=${vend}&vincode=${vincode}&receiver=${email}`
+            `/api/car-info?vendor=${vend}&vincode=${vincode.toUpperCase()}&receiver=${email}`
           )
           const reportStatus = await res.json()
           if (!reportStatus.reportFound) {
@@ -204,8 +205,8 @@ export default function Form() {
       }
     }
 
-    if (validateMail(state.values.email) && validateVincode(state.values.vin)) {
-      await getReportStatus(vendor, state.values.vin, state.values.email)
+    if (validateMail(state.values.email) && validateVincode(state.values.vin.toUpperCase())) {
+      await getReportStatus(vendor, state.values.vin.toUpperCase(), state.values.email)
       // setLoading(false)
     } else {
       setValidationError(errors['setValidation'])
@@ -264,6 +265,7 @@ export default function Form() {
                 variant="solid"
                 w="full"
                 colorScheme="blue"
+                mb="10px"
                 onClick={handleTransaction}
                 isLoading={isUrlLoading}
               >
@@ -287,7 +289,7 @@ export default function Form() {
                 {form['form-carfax']}
               </Text>
               <Text mt="5px" color="red.300" textAlign="justify">
-                20₾
+                {getEnvVar('CARFAX_PRICE')}₾
               </Text>
             </Button>
             <Button
@@ -304,7 +306,7 @@ export default function Form() {
                 {form['form-carcheck']}
               </Text>
               <Text mt="5px" color="red.300" textAlign="justify">
-                20₾
+                {getEnvVar('AUTOCHECK_PRICE')}₾
               </Text>
             </Button>
           </HStack>
