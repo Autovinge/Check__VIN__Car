@@ -205,8 +205,15 @@ export default function Form() {
       }
     }
 
-    if (validateMail(state.values.email) && validateVincode(state.values.vin.toUpperCase())) {
-      await getReportStatus(vendor, state.values.vin.toUpperCase(), state.values.email)
+    if (
+      validateMail(state.values.email) &&
+      validateVincode(state.values.vin.toUpperCase())
+    ) {
+      await getReportStatus(
+        vendor,
+        state.values.vin.toUpperCase(),
+        state.values.email
+      )
       // setLoading(false)
     } else {
       setValidationError(errors['setValidation'])

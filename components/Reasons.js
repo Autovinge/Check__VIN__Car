@@ -327,7 +327,6 @@ const Reasons = () => {
           </Box>
         </Box>
       </Flex>
-
     </Container>
   )
 }
