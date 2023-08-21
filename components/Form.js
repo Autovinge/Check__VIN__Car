@@ -215,11 +215,11 @@ export default function Form() {
   }
   return (
     <Box
-      backgroundImage="/car.png"
-      backgroundPosition={{ base: 'bottom', md: 'bottom', lg: 'center' }}
-      backgroundRepeat="no-repeat"
+      // backgroundImage="/car.png"
+      // backgroundPosition={{ base: 'bottom', md: 'bottom', lg: 'center' }}
+      // backgroundRepeat="no-repeat"
       // backgroundAttachment="fixed"
-      backgroundSize="contain"
+      // backgroundSize="contain"
       ml="auto"
       mr="auto"
       h={{ base: '700px', md: '700px', lg: '780px' }}
@@ -289,7 +289,7 @@ export default function Form() {
                 {form['form-carfax']}
               </Text>
               <Text mt="5px" color="red.300" textAlign="justify">
-                {getEnvVar('CARFAX_PRICE')}₾
+                {process.env.EXT_PUBLIC_CARFAX_PRICE}₾
               </Text>
             </Button>
             <Button
@@ -306,7 +306,7 @@ export default function Form() {
                 {form['form-carcheck']}
               </Text>
               <Text mt="5px" color="red.300" textAlign="justify">
-                {getEnvVar('AUTOCHECK_PRICE')}₾
+                {process.env.NEXT_PUBLIC_AUTOCHECK_PRICE}₾
               </Text>
             </Button>
           </HStack>
