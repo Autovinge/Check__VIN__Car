@@ -26,13 +26,17 @@ export default async function handler(
       validateVincode(vincode)
     ]
 
-    // if successful validation
     if (!condArray.includes(false)) {
-      // if vincode report exists
-      const reportFound = await checkVin(vincode, vendor)
-      res.status(200).send({ vendor, vincode, receiver, reportFound })
+      try {
+        const reportFound = await checkVin(vincode, vendor)
+        res.status(200).json({ vendor, vincode, receiver, reportFound })
+      } catch (err) {
+        res.status(500).json({ msg: 'Server error', error: err instanceof Error ? err.message : err })
+      }
     } else {
-      res.status(400).send({ msg: 'error' })
+      res.status(400).json({ msg: 'Invalid input' })
     }
+  } else {
+    res.status(405).json({ msg: 'Method Not Allowed' })
   }
 }
