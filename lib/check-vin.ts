@@ -5,21 +5,25 @@ const checkVin = async (
   retries: number = 0
 ): Promise<boolean> => {
   try {
-    // Check balance
+    // Check balancee
     const balance = await checkBalance()
-    // if no balance
     if (!balance) {
       return false
     } else {
-      const response = await fetch(
-        `${process.env.API_URL}/${vendor}/check?vincode=${vincode}&api_key=${process.env.API_KEY}`
-      )
+      // Use correct endpoint for Carfax
+      let endpoint = ''
+      if (vendor === 'carfax') {
+        endpoint = `/api/v1/carfax/check?vincode=${vincode}&api_key=${process.env.API_KEY}`
+      } else if (vendor === 'autocheck') {
+        endpoint = `/api/v1/autocheck/check?vincode=${vincode}&api_key=${process.env.API_KEY}`
+      } else {
+        throw new Error('Unknown vendor')
+      }
+      const url = `${process.env.API_URL}${endpoint}`
+      const response = await fetch(url)
       const statusCode = response.status
-      // server error
       if (!response.ok) throw new Error()
-      // report found
       if (statusCode === 200) return true
-      // report not found
       if (statusCode === 404) return false
     }
   } catch (err) {
