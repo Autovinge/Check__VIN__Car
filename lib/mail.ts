@@ -23,8 +23,8 @@ export const sendMail = async (
     // from:'mts.sturua@gmail.com',
     // to: mail, // Change to your recipient
     from: {
-      email: 'mts.sturua@gmail.com',
-      name: 'report'
+      email: 'autovin2023@gmail.com',
+      name: `${vendor} ${vincode}`
     },
     replyTo: {
       email: mail,
