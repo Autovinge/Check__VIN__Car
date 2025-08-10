@@ -8,10 +8,10 @@ export default async function handler(
     try {
       const response = await checkBalance()
       console.log(response)
-      if (!response) res.status(404).send({ msg: 'no balance' })
-      res.status(200).send(response)
+      if (!response) return res.status(404).json({ msg: 'no balance' })
+      return res.status(200).json(response)
     } catch (err) {
-      res.status(400).send({ msg: 'error' })
+      return res.status(400).json({ msg: 'error' })
     }
   }
 }
