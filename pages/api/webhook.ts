@@ -7,17 +7,17 @@ import {
 import getVinInfo from '../../lib/get-vin-info'
 import generatePDF from '../../lib/generatePDF'
 import { sendMail } from '../../lib/mail'
+
 export default async function (req: NextApiRequest, res: NextApiResponse) {
   if (req.method === 'POST') {
     const { PaymentStatus, PaymentId } = req.body
 
     switch (PaymentStatus) {
       case 'Timeout':
-        await deleteDocumentById(PaymentId)
-        res.send({})
       case 'Rejected':
         await deleteDocumentById(PaymentId)
-        res.send({})
+        res.status(200).send({})
+        break
       case 'Captured':
         try {
           const doc = await getDocumentById(PaymentId)
@@ -31,11 +31,17 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
           }
           await sendMail(doc.mail, doc.vincode, doc.vendor, pdfBuffer)
           await updateSentMail(PaymentId)
-          res.send({})
+          res.status(200).send({})
         } catch (err) {
-          res.send({})
+          res.status(200).send({})
         }
+        break
+      default:
+        res.status(200).send({})
+        break
     }
+  } else {
+    res.status(405).json({ msg: 'Method Not Allowed' })
   }
 }
 
